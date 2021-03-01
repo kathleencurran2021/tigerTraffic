@@ -1,0 +1,7 @@
+{
+  "name": "tigerTraffic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

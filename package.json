@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@capacitor/android": "^2.4.6",
     "@capacitor/core": "2.4.6",
     "@capacitor/ios": "^2.4.6",
     "@ionic/react": "^5.5.0",
@@ -62,7 +63,8 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "2.4.6"
+    "@capacitor/cli": "2.4.6",
+    "prettier": "2.2.1"
   },
   "description": "An Ionic project"
 }

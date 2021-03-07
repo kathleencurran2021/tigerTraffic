@@ -1,10 +1,10 @@
-import { IonButton, IonNav, IonToolbar } from '@ionic/react'
+import { IonButton, IonLabel, IonList, IonNav, IonToolbar } from '@ionic/react'
 import React from 'react'
 
 export const Navbar = () => {
   return (
     <IonToolbar>
-      <IonButton>
+      {/* <IonButton>
         <h1>Home</h1>
       </IonButton>
       <IonButton>
@@ -12,7 +12,18 @@ export const Navbar = () => {
       </IonButton>
       <IonButton>
         <h1>User</h1>
-      </IonButton>
+      </IonButton> */}
+      <IonList>
+        <IonButton routerLink="/homepage">
+          <IonLabel>Home</IonLabel>
+        </IonButton>
+        <IonButton routerLink="/map">
+          <IonLabel>Map</IonLabel>
+        </IonButton>
+        <IonButton routerLink="/user">
+          <IonLabel>User</IonLabel>
+        </IonButton>
+      </IonList>
     </IonToolbar>
   )
 }

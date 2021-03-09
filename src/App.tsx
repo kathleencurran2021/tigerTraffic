@@ -23,6 +23,7 @@ import '@ionic/react/css/display.css'
 
 /* Theme variables */
 import './theme/variables.css'
+import { SplashPage } from './pages/SplashPage'
 
 const App: React.FC = () => (
   <IonApp>
@@ -38,6 +39,7 @@ const App: React.FC = () => (
         <Route exact path="/homepage" component={HomePage} />
         <Route exact path="/map" component={MapPage} />
         <Route path="/user" component={UserPage} />
+        <Route path="/welcome" component={SplashPage} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

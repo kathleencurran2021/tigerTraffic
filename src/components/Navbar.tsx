@@ -3,24 +3,15 @@ import React from 'react'
 
 export const Navbar = () => {
   return (
-    <IonToolbar>
-      {/* <IonButton>
-        <h1>Home</h1>
-      </IonButton>
-      <IonButton>
-        <h1>Map</h1>
-      </IonButton>
-      <IonButton>
-        <h1>User</h1>
-      </IonButton> */}
+    <IonToolbar className="navToolbar">
       <IonList>
-        <IonButton routerLink="/homepage">
+        <IonButton className="navButton" routerLink="/homepage">
           <IonLabel>Home</IonLabel>
         </IonButton>
-        <IonButton routerLink="/map">
+        <IonButton className="navButton" routerLink="/map">
           <IonLabel>Map</IonLabel>
         </IonButton>
-        <IonButton routerLink="/user">
+        <IonButton className="navButton" routerLink="/user">
           <IonLabel>User</IonLabel>
         </IonButton>
       </IonList>

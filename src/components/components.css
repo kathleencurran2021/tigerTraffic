@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
+.navToolbar {
+  width: 100%;
+  position: fixed;
+}
+
+.navButton {
+  width: 130%;
+  display: block;
+  background-color: red;
+}

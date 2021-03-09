@@ -4,7 +4,7 @@ import React from 'react'
 export const Navbar = () => {
   return (
     <IonToolbar className="navToolbar">
-      <IonList>
+      <IonList className="navbar-list">
         <IonButton className="navButton" routerLink="/homepage">
           <IonLabel>Home</IonLabel>
         </IonButton>

@@ -1,12 +1,32 @@
 /* Ionic Variables and Theming. For more info, please see:
 http://ionicframework.com/docs/theming/ */
 
+body {
+  background-color: white;
+}
+
 /** Ionic CSS Variables **/
 ion-button {
   --background: #ffc72c;
   --color: black;
   --font-weight: bolder;
-  --width: 33%;
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* navbar styling */
+.navToolbar {
+  width: 100%;
+  height: 5rem;
+}
+
+.navbar-list {
+  display: flex;
+  height: 5rem;
+}
+
+.navbar-list ion-button {
+  font-size: 1.5rem;
 }
 
 /* splash page styling */

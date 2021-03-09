@@ -13,21 +13,27 @@ import TextField from '@material-ui/core/TextField'
 
 const EmailInput = styled(IonInput)`
   width: 80%;
-  background-color: lightgray;
-  margin: 10rem 1rem 0 2rem;
-  border: black 2px;
+  padding-left: 1rem;
+  margin: 10rem 1rem 0 2.2rem;
+  border-bottom: 1px solid gray;
+  display: flex;
+  align-items: center;
+  justifycontent: center;
 `
 
 //why is this capitalized
 const GoButton = styled(IonButton)`
   background-color: #ffc72c;
   color: black;
-  margin-left: 30%;
-  margin-top: 7rem;
-  margin-bottom: 5rem;
+  margin-top: 3rem;
   font-size: 2rem;
   height: 3rem;
   text-align: center;
+  text-transform: capitalize;
+  width: 5rem;
+  display: flex;
+  alignitems: center;
+  justifycontent: center;
 `
 
 export const SplashPage = () => {
@@ -41,6 +47,7 @@ export const SplashPage = () => {
           className="email-input"
           placeholder="Enter your DePauw email"
           inputMode="email"
+          autofocus={true}
         ></EmailInput>
         <GoButton routerLink="/homepage">Go</GoButton>
       </IonContent>

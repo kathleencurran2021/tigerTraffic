@@ -4,7 +4,8 @@ import { IonReactRouter } from '@ionic/react-router'
 import { HomePage } from './pages/HomePage'
 import { MapPage } from './pages/MapPage'
 import { UserPage } from './pages/UserPage'
-
+import PrivateRoute from './components/PrivateRoute'
+// import { UserContext, UserProvider } from './components/AuthContext'
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css'
 
@@ -24,6 +25,9 @@ import '@ionic/react/css/display.css'
 /* Theme variables */
 import './theme/variables.css'
 import { SplashPage } from './pages/SplashPage'
+import { useContext } from 'react'
+
+// const { user } = useContext(UserContext)
 
 const App: React.FC = () => (
   <IonApp>
@@ -34,11 +38,17 @@ const App: React.FC = () => (
         </Route>
         */}
         <Route exact path="/">
-          <Redirect to="/homepage" />
+          <Redirect to="/welcome" />
         </Route>
-        <Route exact path="/homepage" component={HomePage} />
-        <Route exact path="/map" component={MapPage} />
-        <Route path="/user" component={UserPage} />
+        <PrivateRoute exact path="/homepage">
+          <HomePage />
+        </PrivateRoute>
+        <PrivateRoute exact path="/map">
+          <MapPage />
+        </PrivateRoute>
+        <PrivateRoute path="/user">
+          <UserPage />
+        </PrivateRoute>
         <Route path="/welcome" component={SplashPage} />
       </IonRouterOutlet>
     </IonReactRouter>

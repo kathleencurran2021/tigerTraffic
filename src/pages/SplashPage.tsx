@@ -11,22 +11,9 @@ import styled from 'styled-components'
 import { Navbar } from '../components/Navbar'
 import TextField from '@material-ui/core/TextField'
 import { useHistory } from 'react-router-dom'
-// import { UserContext } from './../components/AuthContext'
-// import { isLoggedIn } from '../utils/isLoggedIn'
 
-const EmailInput = styled(IonInput)`
-  width: 80%;
-  padding-left: 1rem;
-  margin: 10rem 1rem 0 2.2rem;
-  border-bottom: 1px solid gray;
-  display: flex;
-  align-items: center;
-  justifycontent: center;
-`
-
-//why is this capitalized
 const GoButton = styled(IonButton)`
-  background-color: #ffc72c;
+  background-color: #ffc72c !important;
   color: black;
   margin-top: 3rem;
   margin-left: 6.5rem;
@@ -40,7 +27,7 @@ const GoButton = styled(IonButton)`
   align-self: center;
 `
 
-export const SplashPage = () => {
+export const SplashPage = (className: string) => {
   const history = useHistory()
   const [textVal, setTextVal] = useState('')
   const [error, setError] = useState(false)
@@ -78,7 +65,7 @@ export const SplashPage = () => {
             onChange={(e) => setTextVal(e.target.value)}
           ></TextField>
           <GoButton
-            className="go-button"
+            className={className}
             onClick={() => handleEmail()}
             // routerLink="/homepage"
           >
@@ -88,13 +75,4 @@ export const SplashPage = () => {
       </IonContent>
     </IonPage>
   )
-}
-
-{
-  /* <EmailInput
-          className="email-input"
-          placeholder="Enter your DePauw email"
-          inputMode="email"
-          autofocus={true}
-        ></EmailInput> */
 }

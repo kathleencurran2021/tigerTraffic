@@ -11,9 +11,10 @@ import {
   Typography,
 } from '@material-ui/core'
 import React, { ReactElement } from 'react'
-import { Type } from 'typescript'
-import Building from './Building'
+
 import PropTypes from 'prop-types'
+import { CheckInPage } from '../pages/CheckInPage'
+import { Link as RouterLink } from 'react-router-dom'
 
 //i think i need an interface somewhere
 // interface BuildingProps extends Building {
@@ -56,15 +57,6 @@ interface ModalProps {
   children: ReactElement
 }
 
-// might be able to do an interface that does this:
-// interface ModalProps {
-//   isOpen: boolean
-//   handleClose: () => void
-//   title: string
-//   children: ReactElement
-//    interface building props extends building here
-// }
-
 export const MapModal: React.FC<ModalProps> = ({
   isOpen,
   handleClose,
@@ -85,10 +77,11 @@ export const MapModal: React.FC<ModalProps> = ({
             className={classes.button}
             variant="contained"
             color="primary"
+            component={RouterLink}
+            to={'/checkin'}
           >
-            Check in
+            Check In
           </Button>
-          {/* <Button onClick={handleClose}></Button> */}
         </DialogActions>
       </DialogContent>
     </Dialog>

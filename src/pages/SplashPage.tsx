@@ -11,23 +11,9 @@ import styled from 'styled-components'
 import { Navbar } from '../components/Navbar'
 import TextField from '@material-ui/core/TextField'
 import { useHistory } from 'react-router-dom'
+import { GoButton } from './pagesStyling'
 
-const GoButton = styled(IonButton)`
-  background-color: #ffc72c !important;
-  color: black;
-  margin-top: 3rem;
-  margin-left: 6.5rem;
-  box-shadow: 2px 2px lightgray;
-  font-size: 2rem;
-  height: 3rem;
-  text-align: center;
-  text-transform: capitalize;
-  width: 5rem;
-  display: flex;
-  align-self: center;
-`
-
-export const SplashPage = (className: string) => {
+export const SplashPage = () => {
   const history = useHistory()
   const [textVal, setTextVal] = useState('')
   const [error, setError] = useState(false)
@@ -64,13 +50,7 @@ export const SplashPage = (className: string) => {
             value={textVal}
             onChange={(e) => setTextVal(e.target.value)}
           ></TextField>
-          <GoButton
-            className={className}
-            onClick={() => handleEmail()}
-            // routerLink="/homepage"
-          >
-            Go
-          </GoButton>
+          <GoButton onClick={() => handleEmail()}>Go</GoButton>
         </form>
       </IonContent>
     </IonPage>

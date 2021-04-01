@@ -11,78 +11,26 @@ import {
 import React from 'react'
 import { Navbar } from '../components/Navbar'
 import { MapModal } from './../components/MapModal'
-import { Julian } from './../components/BuildingStyling'
+import {
+  JulianButton,
+  UBButton,
+  LillyButton,
+  PCCMButton,
+  HooverButton,
+  GCPAButton,
+  HarrisonButton,
+  EastCoButton,
+  RoyButton,
+  AsburyButton,
+} from './../components/BuildingStyling'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     textAlign: 'center',
   },
   boxRules: {
-    height: 540,
-    width: 370,
-    // position: 'absolute',
-  },
-  // julian: {
-  //   position: 'fixed',
-  //   marginLeft: '15rem',
-  //   marginTop: '7.5rem',
-  //   backgroundColor: ' #ffc72c',
-  // },
-  lilly: {
-    position: 'fixed',
-    marginLeft: '15rem',
-    marginTop: '3rem',
-    backgroundColor: '#63666a',
-    color: 'white',
-  },
-  hoover: {
-    position: 'fixed',
-    marginLeft: '7rem',
-    marginTop: '12rem',
-    backgroundColor: '#63666a',
-    color: 'white',
-  },
-  ub: {
-    position: 'fixed',
-    marginLeft: '1.5rem',
-    marginTop: '12rem',
-    backgroundColor: '#63666a',
-    color: 'white',
-  },
-  harrison: {
-    position: 'fixed',
-    marginLeft: '15rem',
-    marginTop: '16rem',
-    backgroundColor: '#63666a',
-    color: 'white',
-  },
-  gcpa: {
-    position: 'fixed',
-    marginLeft: '7rem',
-    marginTop: '4rem',
-    backgroundColor: '#63666a',
-    color: 'white',
-  },
-  eastco: {
-    position: 'fixed',
-    marginLeft: '5.5rem',
-    marginTop: '20rem',
-    backgroundColor: '#63666a',
-    color: 'white',
-  },
-  roy: {
-    position: 'fixed',
-    marginLeft: '19rem',
-    marginTop: '20rem',
-    backgroundColor: '#63666a',
-    color: 'white',
-  },
-  asbury: {
-    position: 'fixed',
-    marginLeft: '15rem',
-    marginTop: '24rem',
-    backgroundColor: '#63666a',
-    color: 'white',
+    height: 476,
+    width: '100%',
   },
 }))
 
@@ -101,40 +49,45 @@ export const MapPage = () => {
     <IonPage>
       <IonContent>
         <IonText>
-          <h1>Map Page</h1>
+          <h1>
+            <b>Study Map</b>
+          </h1>
         </IonText>
         <Container>
           <IonText className={classes.root}>
             <Typography>South Quad &uarr;</Typography>
           </IonText>
           <Box className={classes.boxRules} border={1}>
-            <Button className={classes.lilly} variant="contained" disabled>
+            <LillyButton variant="contained" disabled>
               Lilly
-            </Button>
-            <Julian onClick={handleOpen} className="julian">
+            </LillyButton>
+            <PCCMButton variant="contained" disabled>
+              PCCM
+            </PCCMButton>
+            <JulianButton variant="contained" onClick={handleOpen}>
               Julian
-            </Julian>
-            <Button className={classes.hoover} variant="contained">
-              Hoover
-            </Button>
-            <Button className={classes.ub} variant="contained" disabled>
+            </JulianButton>
+            <UBButton variant="contained" disabled>
               UB
-            </Button>
-            <Button className={classes.gcpa} variant="contained" disabled>
+            </UBButton>
+            <HooverButton variant="contained" disabled>
+              Hoover
+            </HooverButton>
+            <GCPAButton variant="contained" disabled>
               GCPA
-            </Button>
-            <Button className={classes.harrison} variant="contained" disabled>
+            </GCPAButton>
+            <HarrisonButton variant="contained" disabled>
               Harrison
-            </Button>
-            <Button className={classes.eastco} variant="contained" disabled>
-              {`East \nCollege`}
-            </Button>
-            <Button className={classes.roy} variant="contained" disabled>
-              Roy
-            </Button>
-            <Button className={classes.asbury} variant="contained" disabled>
+            </HarrisonButton>
+            <EastCoButton variant="contained" disabled>
+              East<br></br>College
+            </EastCoButton>
+            <RoyButton variant="contained" disabled>
+              Roy O.<br></br>West
+            </RoyButton>
+            <AsburyButton variant="contained" disabled>
               Asbury
-            </Button>
+            </AsburyButton>
           </Box>
           <IonText className={classes.root}>
             <Typography>Seminary St. &darr;</Typography>

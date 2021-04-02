@@ -8,7 +8,7 @@ import {
   TextField,
   Typography,
 } from '@material-ui/core'
-import React from 'react'
+import React, { useState } from 'react'
 import { Navbar } from '../components/Navbar'
 import { MapModal } from './../components/MapModal'
 import {
@@ -23,6 +23,7 @@ import {
   RoyButton,
   AsburyButton,
 } from './../components/BuildingStyling'
+import { Building, BuildingProps, Julian } from './../components/Building'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,9 +39,11 @@ export const MapPage = () => {
   const classes = useStyles()
 
   const [open, setOpen] = React.useState(false)
+  const [building, setBuilding] = useState(Building)
 
   const handleOpen = () => {
     setOpen(true)
+    setBuilding(Julian)
   }
   const handleClose = () => {
     setOpen(false)
@@ -93,8 +96,13 @@ export const MapPage = () => {
             <Typography>Seminary St. &darr;</Typography>
           </IonText>
         </Container>
-        <MapModal isOpen={open} title="Julian" handleClose={handleClose}>
-          <h1>Welcome to Julian</h1>
+        <MapModal
+          isOpen={open}
+          title={building.name}
+          handleClose={handleClose}
+          Building={building}
+        >
+          <h1>Welcome to {building.name}</h1>
         </MapModal>
       </IonContent>
       <Navbar></Navbar>

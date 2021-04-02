@@ -1,4 +1,6 @@
 import React from 'react'
-import { JulianProps } from './Building'
+import { BuildingProps } from './Building'
 
-const Julian: JulianProps = () => {}
+const Julian: React.FC<BuildingProps> = (BuildingProps) => {
+  return <h1>{BuildingProps.peopleInside}</h1>
+}

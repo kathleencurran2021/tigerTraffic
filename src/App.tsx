@@ -48,7 +48,7 @@ const App: React.FC = () => (
           <UserPage />
         </PrivateRoute>
         <PrivateRoute exact component={CheckInPage}>
-          {/* <CheckInPage /> */}
+          <CheckInPage />
         </PrivateRoute>
         <Route path="/welcome" component={SplashPage} />
       </IonRouterOutlet>

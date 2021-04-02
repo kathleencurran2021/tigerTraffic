@@ -15,30 +15,8 @@ import React, { ReactElement } from 'react'
 import PropTypes from 'prop-types'
 import { CheckInPage } from '../pages/CheckInPage'
 import { Link as RouterLink } from 'react-router-dom'
+import { BuildingProps } from './Building'
 
-//i think i need an interface somewhere
-// interface BuildingProps extends Building {
-//   buildings: Building[];
-// }
-
-//pass a props through
-//so when julian clicks on this it will pass the Julian parameter through and will snag that data
-// export const MapModal: React.FC<BuildingProps> = (props: BuildingProps) => {
-//   const [open, setOpen] = React.useState(false)
-
-//   return (
-//     <Dialog open={open}>
-//       <DialogContent>
-//         <Container>
-//           <Typography>People currently studying{props.peopleInside}</Typography>
-//           <Typography>Capacity {props.capacity} </Typography>
-//           <Typography>Seats Available {props.seatsAvailable} </Typography>
-//           <Button onClick={handleClose}></Button>
-//         </Container>
-//       </DialogContent>
-//     </Dialog>
-//   )
-// }
 const useStyles = makeStyles({
   modal: {},
   text: {
@@ -55,6 +33,7 @@ interface ModalProps {
   handleClose: () => void
   title: string
   children: ReactElement
+  Building: BuildingProps
 }
 
 export const MapModal: React.FC<ModalProps> = ({
@@ -62,15 +41,18 @@ export const MapModal: React.FC<ModalProps> = ({
   handleClose,
   title,
   children,
+  Building,
 }) => {
   const classes = useStyles()
   return (
     <Dialog open={isOpen} onClose={handleClose} className={classes.modal}>
       <DialogContent>
         <h1 className={classes.text}>{title}</h1>
-        <Typography>People currently studying</Typography>
-        <Typography>Capacity </Typography>
-        <Typography>Seats Available </Typography>
+        <Typography>
+          People currently studying: {Building.peopleInside}
+        </Typography>
+        <Typography>Capacity: {Building.capacity} </Typography>
+        <Typography>Seats Available: {Building.seatsAvailable} </Typography>
         {children}
         <DialogActions className={classes.button}>
           <Button

@@ -2,25 +2,20 @@ import { IonContent } from '@ionic/react'
 import { Accordion, AccordionDetails } from '@material-ui/core'
 import { AccordionSummary } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
-import React from 'react'
+import React, { useState } from 'react'
 import { Navbar } from '../components/Navbar'
 import { CheckInPageContent } from './pagesStyling'
-import { BuildingProps } from './../components/Building'
+import { BuildingProps, Building } from './../components/Building'
 
-let Julian: BuildingProps = {
-  peopleInside: 34,
-  capacity: 80,
-  seatsAvailable: 46,
-  studySpaces: 4,
-  studySpot: {
-    name: 'Prevo',
-    peopleInside: 3,
-    capacity: 15,
-    canCheckIn: true,
-  },
+interface ModalProps {
+  Building: BuildingProps
 }
 
-export const CheckInPage = (Julian: BuildingProps) => {
+export const CheckInPage = () => {
+  //may need to set the state as the actual building, so --> useState(Julian.peopleInside)
+  const [peopleInsideCount, setPeopleInsideCount] = useState(10)
+  // const [building, setBuilding] = useState()
+
   return (
     <CheckInPageContent>
       <h1 className="title">Check In</h1>
@@ -30,8 +25,8 @@ export const CheckInPage = (Julian: BuildingProps) => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>{`Julian Study Areas`}</Typography>
-          <Typography>{Julian.capacity}</Typography>
+          <Typography>{`Build`}</Typography>
+          <Typography>{'capacity'}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <AccordionSummary

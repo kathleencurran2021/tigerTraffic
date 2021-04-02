@@ -27,7 +27,7 @@ import '@ionic/react/css/display.css'
 import './theme/variables.css'
 import { SplashPage } from './pages/SplashPage'
 import { useContext } from 'react'
-import { BuildingProps } from './components/Building'
+import { BuildingProps, Julian } from './components/Building'
 
 // const { user } = useContext(UserContext)
 
@@ -48,7 +48,7 @@ const App: React.FC = () => (
           <UserPage />
         </PrivateRoute>
         <PrivateRoute exact component={CheckInPage}>
-          <CheckInPage />
+          <CheckInPage Building={Julian} />
         </PrivateRoute>
         <Route path="/welcome" component={SplashPage} />
       </IonRouterOutlet>

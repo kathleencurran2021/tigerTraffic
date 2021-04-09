@@ -8,7 +8,7 @@ import {
   TextField,
   Typography,
 } from '@material-ui/core'
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Navbar } from '../components/Navbar'
 import { MapModal } from './../components/MapModal'
 import {
@@ -23,7 +23,14 @@ import {
   RoyButton,
   AsburyButton,
 } from './../components/BuildingStyling'
-import { Building, BuildingProps, Julian } from './../components/Building'
+import {
+  Building,
+  BuildingProps,
+  Hoover,
+  Julian,
+} from './../components/Building'
+import { BuildingContext } from '../context/BuildingContext'
+import { CheckinContext } from '../context/CheckinContext'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,13 +48,29 @@ export const MapPage = () => {
   const [open, setOpen] = React.useState(false)
   const [building, setBuilding] = useState(Building)
 
-  const handleOpen = () => {
+  // const { isCheckedIn, whatBuilding } = useContext(CheckinContext)
+  // const { setCheckedIn, isCheckedIn } = useContext(CheckinContext)
+  // const { isCheckedIn, setCheckedIn } = useContext(CheckinContext)
+  // const [building] = useState(whatBuilding)
+  // const whatBuilding = useContext(CheckinContext)
+  // const whatBuilding = useContext(BuildingContext)
+  // const { building, setBuilding } = useContext(BuildingContext)
+  // const { checkin, setCheckin } = useContext(CheckinContext)
+
+  // useEffect(() => {
+  //   console.log('trying checkin', building)
+  // }, [building])
+
+  const handleOpen = (someBuilding: BuildingProps) => {
     setOpen(true)
-    setBuilding(Julian)
+    console.log('open is true')
+    setBuilding(someBuilding)
   }
+
   const handleClose = () => {
     setOpen(false)
   }
+
   return (
     <IonPage>
       <IonContent>
@@ -67,13 +90,19 @@ export const MapPage = () => {
             <PCCMButton variant="contained" disabled>
               PCCM
             </PCCMButton>
-            <JulianButton variant="contained" onClick={handleOpen}>
+            <JulianButton
+              variant="contained"
+              onClick={() => handleOpen(Julian)}
+            >
               Julian
             </JulianButton>
             <UBButton variant="contained" disabled>
               UB
             </UBButton>
-            <HooverButton variant="contained" disabled>
+            <HooverButton
+              variant="contained"
+              onClick={() => handleOpen(Hoover)}
+            >
               Hoover
             </HooverButton>
             <GCPAButton variant="contained" disabled>

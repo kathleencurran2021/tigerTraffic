@@ -13,7 +13,7 @@ export const UserPage = () => {
           <IonText>
             You have been in <b>Julian</b> for <b>27.6 minutes</b>
           </IonText>
-          <h3 style={{ textAlign: 'center' }}>Previous Study Log:</h3>
+          <h3 style={{ textAlign: 'center' }}>Your Check-ins:</h3>
           <div>
             <IonText>Julian: 87.2 minutes</IonText>
             <br></br>

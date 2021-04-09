@@ -2,6 +2,7 @@ import { IonContent, IonPage, IonText } from '@ionic/react'
 import { Button, makeStyles } from '@material-ui/core'
 import React from 'react'
 import { Navbar } from '../components/Navbar'
+import { Link as RouterLink } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     verticalAlign: 'middle',
     alignItems: 'center',
+    marginTop: '2rem',
     // display: 'flex',
   },
   inButton: {
@@ -34,13 +36,15 @@ export const HomePage: React.FC = () => {
           <h1>HomePage</h1>
         </IonText>
         {/* if checkedin != true */}
-        <IonText>You are not checked in anywhere </IonText>
+        <IonText>You are checked in to Julian</IonText>
         <br></br>
         <div className={classes.buttons}>
           <Button
             className={classes.inButton}
             variant="contained"
             color="primary"
+            component={RouterLink}
+            to={'/checkin'}
           >
             Check In
           </Button>

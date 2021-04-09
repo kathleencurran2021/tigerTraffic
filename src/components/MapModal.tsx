@@ -10,12 +10,14 @@ import {
   Modal,
   Typography,
 } from '@material-ui/core'
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useContext, useEffect } from 'react'
 
 import PropTypes from 'prop-types'
 import { CheckInPage } from '../pages/CheckInPage'
 import { Link as RouterLink } from 'react-router-dom'
 import { BuildingProps } from './Building'
+import { CheckinContext } from '../context/CheckinContext'
+import { check } from 'prettier'
 
 const useStyles = makeStyles({
   modal: {},
@@ -44,12 +46,23 @@ export const MapModal: React.FC<ModalProps> = ({
   Building,
 }) => {
   const classes = useStyles()
+  const { checkin, setCheckin } = useContext(CheckinContext)
+
+  useEffect(() => {
+    console.log('trying checkin', checkin)
+  }, [checkin])
+
+  const handleModalClick = () => {
+    setCheckin(true)
+    console.log('checked in?' + checkin)
+  }
+
   return (
     <Dialog open={isOpen} onClose={handleClose} className={classes.modal}>
       <DialogContent>
         <h1 className={classes.text}>{title}</h1>
         <Typography>
-          People currently studying: {Building.peopleInside}
+          People currently inside: {Building.peopleInside}
         </Typography>
         <Typography>Capacity: {Building.capacity} </Typography>
         <Typography>Seats Available: {Building.seatsAvailable} </Typography>
@@ -61,6 +74,7 @@ export const MapModal: React.FC<ModalProps> = ({
             color="primary"
             component={RouterLink}
             to={'/checkin'}
+            onClick={handleModalClick}
           >
             Check In
           </Button>

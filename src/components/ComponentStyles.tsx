@@ -26,6 +26,10 @@ const BottomNavAction = styled(BottomNavigationAction)({
 
 const CheckinAccord = styled(Accordion)({
   padding: '2px 12px 2px 12px',
+  display: 'block',
+  '&  .MuiAccordionSummary-root': {
+    display: 'block',
+  },
   '& .MuiAccordionSummary-expandIcon': {
     '&::after': {
       color: 'blue',
@@ -34,17 +38,21 @@ const CheckinAccord = styled(Accordion)({
 })
 
 const AccordionSum = styled(AccordionSummary)({
-  //   display: 'block',
-  //   '& .MuiAccordionSummary-content': {
-  //     marginTop: '1rem',
-  //     marginBottom: 0,
-  //   },
-  //   '& .MuiAccordionSummary-expandIcon': {
-  //     color: 'red',
-  //     padding: '2px 0px 8px 0px',
-  //     textAlign: 'right',
-  //     marginLeft: '90%',
-  //   },
+  display: 'block',
+  '& .MuiAccordionSummary-content': {
+    marginTop: '1rem',
+    marginBottom: 0,
+    display: 'block',
+  },
+  '& p': {
+    width: '100%',
+  },
+  // '& .MuiAccordionSummary-expandIcon': {
+  //   color: 'red',
+  //   padding: '2px 0px 8px 0px',
+  //   textAlign: 'right',
+  //   marginLeft: '90%',
+  // },
 })
 
 export { BottomNav, BottomNavAction, AccordionSum, CheckinAccord }

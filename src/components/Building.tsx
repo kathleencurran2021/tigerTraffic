@@ -52,13 +52,7 @@ let Hoover: BuildingProps = {
   peopleInside: 100,
   capacity: 230,
   seatsAvailable: 130,
-  studySpaces: 4,
-  // studySpot: {
-  //   name: 'Prevo',
-  //   peopleInside: 3,
-  //   capacity: 15,
-  //   canCheckIn: true,
-  // },
+  studySpaces: 0,
 }
 
-export { Building, Julian }
+export { Building, Julian, Hoover }

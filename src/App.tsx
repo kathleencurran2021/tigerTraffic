@@ -26,34 +26,47 @@ import '@ionic/react/css/display.css'
 /* Theme variables */
 import './theme/variables.css'
 import { SplashPage } from './pages/SplashPage'
-import { useContext } from 'react'
-import { BuildingProps, Julian } from './components/Building'
+import { useContext, useState } from 'react'
+import { Building, BuildingProps, Julian } from './components/Building'
+import { BuildingContext } from './context/BuildingContext'
+import { CheckinContext } from './context/CheckinContext'
 
 // const { user } = useContext(UserContext)
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/">
-          <Redirect to="/welcome" />
-        </Route>
-        <PrivateRoute exact path="/homepage">
-          <HomePage />
-        </PrivateRoute>
-        <PrivateRoute exact path="/map">
-          <MapPage />
-        </PrivateRoute>
-        <PrivateRoute path="/user">
-          <UserPage />
-        </PrivateRoute>
-        <PrivateRoute exact component={CheckInPage}>
-          <CheckInPage Building={Julian} />
-        </PrivateRoute>
-        <Route path="/welcome" component={SplashPage} />
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-)
+const App: React.FC = () => {
+  const [building, setBuilding] = useState<BuildingProps>(Building)
+  const [checkin, setCheckin] = useState<boolean>(false)
+
+  return (
+    <IonApp>
+      {/* <BuildingContext.Provider value={(building, setBuilding)}> */}
+      <CheckinContext.Provider value={{ checkin, setCheckin }}>
+        <BuildingContext.Provider value={{ building, setBuilding }}>
+          <IonReactRouter>
+            <IonRouterOutlet>
+              <Route exact path="/">
+                <Redirect to="/welcome" />
+              </Route>
+              <PrivateRoute exact path="/homepage">
+                <HomePage />
+              </PrivateRoute>
+              <PrivateRoute exact path="/map">
+                <MapPage />
+              </PrivateRoute>
+              <PrivateRoute path="/user">
+                <UserPage />
+              </PrivateRoute>
+              <PrivateRoute exact component={CheckInPage}>
+                <CheckInPage Building={Julian} />
+              </PrivateRoute>
+              <Route path="/welcome" component={SplashPage} />
+            </IonRouterOutlet>
+          </IonReactRouter>
+        </BuildingContext.Provider>
+      </CheckinContext.Provider>
+      {/* </BuildingContext.Provider> */}
+    </IonApp>
+  )
+}
 
 export default App

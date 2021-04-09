@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import reportWebVitals from './reportWebVitals'
+// import { CheckContextProvider } from './context/CheckinContextProvider'
+// import { BuildingContext } from './context/BuildingContext'
+// import { CheckinContext } from './context/CheckinContext'
 // import { UserProvider } from './components/AuthContext'
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <UserProvider> */}
+    {/* <CheckinContext.Pr> */}
     <App />
-    {/* </UserProvider> */}
+    {/* </CheckinContext> */}
   </React.StrictMode>,
   document.getElementById('root')
 )

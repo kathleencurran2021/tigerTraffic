@@ -52,7 +52,9 @@ export const CheckInPage: React.FC<CheckinProps> = ({ Building }) => {
         >
           {/* <Typography>{`${Building.name} Study Spaces`}</Typography> */}
           <Typography>{`${Building.name} total capacity: ${Building.capacity}`}</Typography>
+
           <Typography>{`Seats in use: ${Building.peopleInside}`}</Typography>
+
           <Typography>{`Seats Available: ${Building.seatsAvailable}`}</Typography>
         </AccordionSum>
         <AccordionDetails>
@@ -74,7 +76,9 @@ export const CheckInPage: React.FC<CheckinProps> = ({ Building }) => {
           </AccordionSum>
         </AccordionDetails> */}
       </CheckinAccord>
-      <Button className={classes.button}>Check In</Button>
+      <Button className={classes.button} disabled>
+        Check In
+      </Button>
       <Navbar />
     </CheckInPageContent>
   )

@@ -1,8 +1,9 @@
 import { IonContent, IonPage, IonText } from '@ionic/react'
 import { Button, makeStyles } from '@material-ui/core'
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Navbar } from '../components/Navbar'
 import { Link as RouterLink } from 'react-router-dom'
+import { CheckinContext } from '../context/CheckinContext'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,6 +30,20 @@ const useStyles = makeStyles((theme) => ({
 
 export const HomePage: React.FC = () => {
   const classes = useStyles()
+  const { checkin, setCheckin } = useContext(CheckinContext)
+
+  useEffect(() => {
+    console.log('trying checkin home', checkin)
+  }, [checkin])
+
+  const handleCheckin = () => {
+    setCheckin(true)
+  }
+
+  const handleCheckout = () => {
+    setCheckin(false)
+  }
+
   return (
     <IonPage className={classes.root}>
       <IonContent>
@@ -45,6 +60,7 @@ export const HomePage: React.FC = () => {
             color="primary"
             component={RouterLink}
             to={'/checkin'}
+            onClick={handleCheckin}
           >
             Check In
           </Button>
@@ -52,6 +68,7 @@ export const HomePage: React.FC = () => {
             variant="contained"
             color="secondary"
             className={classes.inButton}
+            onClick={handleCheckout}
           >
             Check Out
           </Button>

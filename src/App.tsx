@@ -41,28 +41,28 @@ const App: React.FC = () => {
     <IonApp>
       {/* <BuildingContext.Provider value={(building, setBuilding)}> */}
       <CheckinContext.Provider value={{ checkin, setCheckin }}>
-        <BuildingContext.Provider value={{ building, setBuilding }}>
-          <IonReactRouter>
-            <IonRouterOutlet>
-              <Route exact path="/">
-                <Redirect to="/welcome" />
-              </Route>
-              <PrivateRoute exact path="/homepage">
-                <HomePage />
-              </PrivateRoute>
-              <PrivateRoute exact path="/map">
-                <MapPage />
-              </PrivateRoute>
-              <PrivateRoute path="/user">
-                <UserPage />
-              </PrivateRoute>
-              <PrivateRoute exact component={CheckInPage}>
-                <CheckInPage Building={Julian} />
-              </PrivateRoute>
-              <Route path="/welcome" component={SplashPage} />
-            </IonRouterOutlet>
-          </IonReactRouter>
-        </BuildingContext.Provider>
+        {/* <BuildingContext.Provider value={{ building, setBuilding }}> */}
+        <IonReactRouter>
+          <IonRouterOutlet>
+            <Route exact path="/">
+              <Redirect to="/welcome" />
+            </Route>
+            <PrivateRoute exact path="/homepage">
+              <HomePage />
+            </PrivateRoute>
+            <PrivateRoute exact path="/map">
+              <MapPage />
+            </PrivateRoute>
+            <PrivateRoute path="/user">
+              <UserPage />
+            </PrivateRoute>
+            <PrivateRoute exact component={CheckInPage}>
+              <CheckInPage Building={Julian} />
+            </PrivateRoute>
+            <Route path="/welcome" component={SplashPage} />
+          </IonRouterOutlet>
+        </IonReactRouter>
+        {/* </BuildingContext.Provider> */}
       </CheckinContext.Provider>
       {/* </BuildingContext.Provider> */}
     </IonApp>

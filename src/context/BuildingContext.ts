@@ -8,7 +8,7 @@ interface buildContext {
 
 const BuildingContext = createContext({
   building: Julian,
-  setBuilding: (x: BuildingProps) => void,
+  setBuilding: () => {},
 })
 
 export { BuildingContext }

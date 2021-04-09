@@ -7,11 +7,12 @@ import {
 } from '@material-ui/core'
 import { AccordionSummary } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Navbar } from '../components/Navbar'
 import { CheckInPageContent } from './pagesStyling'
 import { BuildingProps, Building } from './../components/Building'
 import { AccordionSum, CheckinAccord } from '../components/ComponentStyles'
+import { CheckinContext } from '../context/CheckinContext'
 
 interface CheckinProps {
   Building: BuildingProps
@@ -36,8 +37,13 @@ const useStyles = makeStyles(() => ({
 export const CheckInPage: React.FC<CheckinProps> = ({ Building }) => {
   //may need to set the state as the actual building, so --> useState(Julian.peopleInside)
   const [peopleInsideCount, setPeopleInsideCount] = useState(10)
+  const { checkin, setCheckin } = useContext(CheckinContext)
   // const [building, setBuilding] = useState()
   const classes = useStyles()
+
+  useEffect(() => {
+    console.log('trying checkin checkin', checkin)
+  }, [checkin])
 
   return (
     <CheckInPageContent>
@@ -76,9 +82,11 @@ export const CheckInPage: React.FC<CheckinProps> = ({ Building }) => {
           </AccordionSum>
         </AccordionDetails> */}
       </CheckinAccord>
+
       <Button className={classes.button} disabled>
         Check In
       </Button>
+
       <Navbar />
     </CheckInPageContent>
   )

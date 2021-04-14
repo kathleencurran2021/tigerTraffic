@@ -50,20 +50,39 @@ export const HomePage: React.FC = () => {
         <IonText>
           <h1>HomePage</h1>
         </IonText>
-        {/* if checkedin != true */}
-        <IonText>You are checked in to Julian</IonText>
+        {checkin == true ? (
+          <IonText>You are checked in to 'building'</IonText>
+        ) : (
+          <IonText>You are not checked in anywhere</IonText>
+        )}
+
         <br></br>
         <div className={classes.buttons}>
-          <Button
-            className={classes.inButton}
-            variant="contained"
-            color="primary"
-            component={RouterLink}
-            to={'/checkin'}
-            onClick={handleCheckin}
-          >
-            Check In
-          </Button>
+          {checkin == false ? (
+            <Button
+              className={classes.inButton}
+              variant="contained"
+              color="primary"
+              component={RouterLink}
+              to={'/checkin'}
+              onClick={handleCheckin}
+            >
+              Check In
+            </Button>
+          ) : (
+            <Button
+              className={classes.inButton}
+              variant="contained"
+              color="primary"
+              component={RouterLink}
+              to={'/checkin'}
+              onClick={handleCheckin}
+              disabled
+            >
+              Check In
+            </Button>
+          )}
+
           <Button
             variant="contained"
             color="secondary"

@@ -1,14 +1,6 @@
 import { IonContent, IonPage, IonText } from '@ionic/react'
-import {
-  Box,
-  Button,
-  Container,
-  Dialog,
-  makeStyles,
-  TextField,
-  Typography,
-} from '@material-ui/core'
-import React, { useContext, useEffect, useState } from 'react'
+import { Box, Container, makeStyles, Typography } from '@material-ui/core'
+import React, { useContext, useEffect } from 'react'
 import { Navbar } from '../components/Navbar'
 import { MapModal } from './../components/MapModal'
 import {
@@ -23,14 +15,8 @@ import {
   RoyButton,
   AsburyButton,
 } from './../components/BuildingStyling'
-import {
-  Building,
-  BuildingProps,
-  Hoover,
-  Julian,
-} from './../components/Building'
+import { BuildingProps, Hoover, Julian } from './../components/Building'
 import { BuildingContext } from '../context/BuildingContext'
-import { CheckinContext } from '../context/CheckinContext'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,27 +30,18 @@ const useStyles = makeStyles((theme) => ({
 
 export const MapPage = () => {
   const classes = useStyles()
-
   const [open, setOpen] = React.useState(false)
-  const [building, setBuilding] = useState(Building)
+  const { building, setBuilding } = useContext(BuildingContext)
 
-  // const { isCheckedIn, whatBuilding } = useContext(CheckinContext)
-  // const { setCheckedIn, isCheckedIn } = useContext(CheckinContext)
-  // const { isCheckedIn, setCheckedIn } = useContext(CheckinContext)
-  // const [building] = useState(whatBuilding)
-  // const whatBuilding = useContext(CheckinContext)
-  // const whatBuilding = useContext(BuildingContext)
-  // const { building, setBuilding } = useContext(BuildingContext)
-  // const { checkin, setCheckin } = useContext(CheckinContext)
-
-  // useEffect(() => {
-  //   console.log('trying checkin', building)
-  // }, [building])
+  useEffect(() => {
+    console.log('trying checkin', building)
+  }, [building])
 
   const handleOpen = (someBuilding: BuildingProps) => {
     setOpen(true)
     console.log('open is true')
     setBuilding(someBuilding)
+    console.log('What building?', building)
   }
 
   const handleClose = () => {

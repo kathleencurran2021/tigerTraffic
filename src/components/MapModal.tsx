@@ -18,6 +18,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import { BuildingProps } from './Building'
 import { CheckinContext } from '../context/CheckinContext'
 import { check } from 'prettier'
+import { BuildingContext } from '../context/BuildingContext'
 
 const useStyles = makeStyles({
   modal: {},
@@ -47,14 +48,19 @@ export const MapModal: React.FC<ModalProps> = ({
 }) => {
   const classes = useStyles()
   const { checkin, setCheckin } = useContext(CheckinContext)
+  const { building, setBuilding } = useContext(BuildingContext)
+  const [open, setOpen] = React.useState(false)
 
   useEffect(() => {
-    console.log('trying checkin', checkin)
-  }, [checkin])
+    console.log('Checkin Context Modal:', checkin)
+    console.log('Modal building', building)
+  }, [checkin, building])
 
   const handleModalClick = () => {
-    setCheckin(true)
     console.log('checked in?' + checkin)
+    setCheckin(true)
+    setBuilding(building)
+    handleClose()
   }
 
   return (
@@ -72,11 +78,20 @@ export const MapModal: React.FC<ModalProps> = ({
             className={classes.button}
             variant="contained"
             color="primary"
-            component={RouterLink}
-            to={'/checkin'}
+            // component={RouterLink}
+            // to={'/checkin'}
             onClick={handleModalClick}
           >
             Check In
+          </Button>
+          <Button
+            className={classes.button}
+            variant="contained"
+            component={RouterLink}
+            to={'/checkin'}
+          >
+            {' '}
+            View More
           </Button>
         </DialogActions>
       </DialogContent>

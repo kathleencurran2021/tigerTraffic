@@ -33,6 +33,11 @@ const Building: BuildingProps = {
   // studySpot: SomeStudySpot,
 }
 
+export interface BuildingState {
+  building: BuildingProps
+  setBuilding: React.Dispatch<React.SetStateAction<BuildingProps>>
+}
+
 let Julian: BuildingProps = {
   name: 'Julian',
   peopleInside: 34,

@@ -13,6 +13,7 @@ import { CheckInPageContent } from './pagesStyling'
 import { BuildingProps, Building } from './../components/Building'
 import { AccordionSum, CheckinAccord } from '../components/ComponentStyles'
 import { CheckinContext } from '../context/CheckinContext'
+import { BuildingContext } from '../context/BuildingContext'
 
 interface CheckinProps {
   Building: BuildingProps
@@ -30,20 +31,30 @@ const useStyles = makeStyles(() => ({
     textAlign: 'center',
     backgroundColor: '#ffc72c',
     marginTop: '1rem',
-    left: '143px',
+    left: '106px',
   },
 }))
 
-export const CheckInPage: React.FC<CheckinProps> = ({ Building }) => {
+export const CheckInPage = () => {
   //may need to set the state as the actual building, so --> useState(Julian.peopleInside)
-  const [peopleInsideCount, setPeopleInsideCount] = useState(10)
   const { checkin, setCheckin } = useContext(CheckinContext)
-  // const [building, setBuilding] = useState()
+  const { building, setBuilding } = useContext(BuildingContext)
   const classes = useStyles()
 
+  const handleCheckin = () => {
+    setCheckin(true)
+    console.log()
+    setBuilding(building)
+    console.log('before people', building.peopleInside)
+
+    building.peopleInside += 1
+    console.log('after people', building.peopleInside)
+  }
+
   useEffect(() => {
-    console.log('trying checkin checkin', checkin)
-  }, [checkin])
+    console.log('trying checkin checkinpage', checkin)
+    console.log('hb building?', building)
+  }, [checkin, building])
 
   return (
     <CheckInPageContent>
@@ -56,14 +67,20 @@ export const CheckInPage: React.FC<CheckinProps> = ({ Building }) => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          {/* <Typography>{`${Building.name} Study Spaces`}</Typography> */}
-          <Typography>{`${Building.name} total capacity: ${Building.capacity}`}</Typography>
-
-          <Typography>{`Seats in use: ${Building.peopleInside}`}</Typography>
-
-          <Typography>{`Seats Available: ${Building.seatsAvailable}`}</Typography>
+          <Typography>{`${building.name} total capacity: ${building.capacity}`}</Typography>
+          <Typography>{`Seats in use: ${building.peopleInside}`}</Typography>
+          <Typography>{`Seats Available: ${building.seatsAvailable}`}</Typography>
+          {checkin == true ? (
+            <Button className={classes.button} disabled>
+              Check In
+            </Button>
+          ) : (
+            <Button className={classes.button} onClick={handleCheckin}>
+              Check In
+            </Button>
+          )}
         </AccordionSum>
-        <AccordionDetails>
+        {/* <AccordionDetails>
           <AccordionSum
             expandIcon={`+`}
             aria-controls="panel2a-content"
@@ -71,7 +88,7 @@ export const CheckInPage: React.FC<CheckinProps> = ({ Building }) => {
           >
             <Typography>Prevo</Typography>
           </AccordionSum>
-        </AccordionDetails>
+        </AccordionDetails> */}
         {/* <AccordionDetails>
           <AccordionSum
             expandIcon={`+`}
@@ -82,10 +99,6 @@ export const CheckInPage: React.FC<CheckinProps> = ({ Building }) => {
           </AccordionSum>
         </AccordionDetails> */}
       </CheckinAccord>
-
-      <Button className={classes.button} disabled>
-        Check In
-      </Button>
 
       <Navbar />
     </CheckInPageContent>

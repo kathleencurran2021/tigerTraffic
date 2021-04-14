@@ -1,14 +1,20 @@
 import React, { createContext } from 'react'
-import { Building, BuildingProps, Julian } from '../components/Building'
+import { BuildingProps, BuildingState, Julian } from '../components/Building'
 
-interface buildContext {
-  building: BuildingProps
-  setBuilding: (x: BuildingProps) => void
+const Building: BuildingProps = {
+  name: '',
+  peopleInside: 0,
+  capacity: 0,
+  seatsAvailable: 0,
+  studySpaces: 0,
+  // studySpot: SomeStudySpot,
 }
 
-const BuildingContext = createContext({
-  building: Julian,
-  setBuilding: () => {},
-})
+const defaultBuildingState: BuildingState = {
+  building: Building,
+  setBuilding: (): void => {},
+}
+
+const BuildingContext = createContext<BuildingState>(defaultBuildingState)
 
 export { BuildingContext }

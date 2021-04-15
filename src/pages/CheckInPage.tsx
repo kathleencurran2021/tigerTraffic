@@ -9,7 +9,7 @@ import { AccordionSummary } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
 import React, { useContext, useEffect, useState } from 'react'
 import { Navbar } from '../components/Navbar'
-
+import { useStopwatch } from 'react-timer-hook'
 import { BuildingProps, Building } from './../components/Building'
 import {
   AccordionSum,
@@ -18,6 +18,8 @@ import {
 } from '../components/ComponentStyles'
 import { CheckinContext } from '../context/CheckinContext'
 import { BuildingContext } from '../context/BuildingContext'
+import { TimeContext } from '../context/TimeContext'
+import { UseInterval } from '../components/Stopwatch'
 
 interface CheckinProps {
   Building: BuildingProps
@@ -41,28 +43,49 @@ const useStyles = makeStyles(() => ({
 }))
 
 export const CheckInPage = () => {
+  const { seconds, minutes, isRunning, start, reset } = useStopwatch({
+    autoStart: false,
+  })
   const { checkin, setCheckin } = useContext(CheckinContext)
   const { building, setBuilding } = useContext(BuildingContext)
+  const { time, setTime } = useContext(TimeContext)
+  const [isPlaying, setPlaying] = useState<boolean>(false)
   const classes = useStyles()
+  const delay = 1000
 
   const handleCheckin = () => {
     setCheckin(true)
     console.log()
     setBuilding(building)
-    console.log('before people', building.peopleInside)
 
     building.peopleInside += 1
     building.seatsAvailable -= 1
-    console.log('after people', building.peopleInside)
+
+    // start()
+    // setTime(time + 1)
+    setPlaying(!isPlaying)
+
+    console.log('after start seconds', seconds)
+    console.log('is there time?')
   }
+
+  UseInterval(
+    () => {
+      setTime(time + 1)
+    },
+    isPlaying ? delay : null
+  )
 
   useEffect(() => {
     console.log('trying checkin checkinpage', checkin)
     console.log('hb building?', building)
-  }, [checkin, building])
+    console.log(seconds)
+    console.log('time', time)
+  }, [checkin, building, time])
 
   return (
     <CheckInPageContent>
+      <p>TIME: {time}</p>
       <h1 className={classes.root}>Check In {Building.name}</h1>
       <CheckinAccord className="main-accordion">
         <AccordionSum

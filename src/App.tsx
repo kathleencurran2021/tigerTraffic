@@ -33,39 +33,43 @@ import { BuildingContext } from './context/BuildingContext'
 import { CheckinContext } from './context/CheckinContext'
 import { DefaultUser, UserProps } from './components/User'
 import { UserContext } from './context/UserContext'
+import { TimeContext, timeProps } from './context/TimeContext'
 
 const App: React.FC = () => {
   const [building, setBuilding] = useState<BuildingProps>(Building)
   const [checkin, setCheckin] = useState<boolean>(false)
   const [user, setUser] = useState<UserProps>(DefaultUser)
+  const [time, setTime] = useState<number>(0)
 
   return (
     <IonApp>
       <UserContext.Provider value={{ user, setUser }}>
         <CheckinContext.Provider value={{ checkin, setCheckin }}>
           <BuildingContext.Provider value={{ building, setBuilding }}>
-            <IonReactRouter>
-              <IonRouterOutlet>
-                <Switch>
-                  <Route exact path="/">
-                    <Redirect to="/welcome" />
-                  </Route>
-                  <PrivateRoute exact path="/homepage">
-                    <HomePage />
-                  </PrivateRoute>
-                  <PrivateRoute exact path="/map">
-                    <MapPage />
-                  </PrivateRoute>
-                  <PrivateRoute path="/user">
-                    <UserPage />
-                  </PrivateRoute>
-                  <PrivateRoute exact path="/checkin">
-                    <CheckInPage />
-                  </PrivateRoute>
-                  <Route path="/welcome" component={SplashPage} />
-                </Switch>
-              </IonRouterOutlet>
-            </IonReactRouter>
+            <TimeContext.Provider value={{ time, setTime }}>
+              <IonReactRouter>
+                <IonRouterOutlet>
+                  <Switch>
+                    <Route exact path="/">
+                      <Redirect to="/welcome" />
+                    </Route>
+                    <PrivateRoute exact path="/homepage">
+                      <HomePage />
+                    </PrivateRoute>
+                    <PrivateRoute exact path="/map">
+                      <MapPage />
+                    </PrivateRoute>
+                    <PrivateRoute path="/user">
+                      <UserPage />
+                    </PrivateRoute>
+                    <PrivateRoute exact path="/checkin">
+                      <CheckInPage />
+                    </PrivateRoute>
+                    <Route path="/welcome" component={SplashPage} />
+                  </Switch>
+                </IonRouterOutlet>
+              </IonReactRouter>
+            </TimeContext.Provider>
           </BuildingContext.Provider>
         </CheckinContext.Provider>
       </UserContext.Provider>

@@ -7,6 +7,7 @@ import { CheckinContext } from '../context/CheckinContext'
 import { BuildingContext } from '../context/BuildingContext'
 import { Building } from '../components/Building'
 import { UserContext } from '../context/UserContext'
+import { TimeContext } from '../context/TimeContext'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,15 +37,17 @@ export const HomePage: React.FC = () => {
   const { checkin, setCheckin } = useContext(CheckinContext)
   const { building, setBuilding } = useContext(BuildingContext)
   const { user, setUser } = useContext(UserContext)
+  const { time, setTime } = useContext(TimeContext)
 
   useEffect(() => {
     console.log('checkin home', checkin)
     console.log('trying building home', building)
-    console.log('and the user is', user)
+    // console.log('and the user is', user)
   }, [checkin, building])
 
   const handleCheckout = () => {
     setCheckin(false)
+    setTime(0)
     setBuilding(Building)
     building.peopleInside -= 1
     building.seatsAvailable += 1
@@ -67,8 +70,7 @@ export const HomePage: React.FC = () => {
               variant="contained"
               color="primary"
               component={RouterLink}
-              to={'/map'}
-            >
+              to={'/map'}>
               Check In
             </Button>
           )) || (
@@ -78,8 +80,7 @@ export const HomePage: React.FC = () => {
               color="primary"
               component={RouterLink}
               to={'/checkin'}
-              disabled
-            >
+              disabled>
               Check In
             </Button>
           )}
@@ -89,8 +90,7 @@ export const HomePage: React.FC = () => {
               variant="contained"
               color="secondary"
               className={classes.inButton}
-              onClick={handleCheckout}
-            >
+              onClick={handleCheckout}>
               Check Out
             </Button>
           ) : (
@@ -99,8 +99,7 @@ export const HomePage: React.FC = () => {
               color="secondary"
               className={classes.inButton}
               onClick={handleCheckout}
-              disabled
-            >
+              disabled>
               Check Out
             </Button>
           )}

@@ -1,23 +1,17 @@
-//this is where I want the modal to pop up
-//should be able to populate the modal based on what the capacity requirements are for a space
 import {
   Button,
-  Container,
   Dialog,
   DialogActions,
   DialogContent,
   makeStyles,
-  Modal,
   Typography,
 } from '@material-ui/core'
 import React, { ReactElement, useContext, useEffect } from 'react'
 
 import PropTypes from 'prop-types'
-import { CheckInPage } from '../pages/CheckInPage'
 import { Link as RouterLink } from 'react-router-dom'
 import { BuildingProps } from './Building'
 import { CheckinContext } from '../context/CheckinContext'
-import { check } from 'prettier'
 import { BuildingContext } from '../context/BuildingContext'
 
 const useStyles = makeStyles({
@@ -49,7 +43,6 @@ export const MapModal: React.FC<ModalProps> = ({
   const classes = useStyles()
   const { checkin, setCheckin } = useContext(CheckinContext)
   const { building, setBuilding } = useContext(BuildingContext)
-  const [open, setOpen] = React.useState(false)
 
   useEffect(() => {
     console.log('Checkin Context Modal:', checkin)

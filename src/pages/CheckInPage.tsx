@@ -36,7 +36,6 @@ const useStyles = makeStyles(() => ({
 }))
 
 export const CheckInPage = () => {
-  //may need to set the state as the actual building, so --> useState(Julian.peopleInside)
   const { checkin, setCheckin } = useContext(CheckinContext)
   const { building, setBuilding } = useContext(BuildingContext)
   const classes = useStyles()

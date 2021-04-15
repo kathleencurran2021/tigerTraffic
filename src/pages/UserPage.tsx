@@ -1,6 +1,5 @@
 import { IonContent, IonPage, IonText } from '@ionic/react'
 import { Button, makeStyles } from '@material-ui/core'
-import { yellow } from '@material-ui/core/colors'
 import React, { useContext, useEffect } from 'react'
 import { Building } from '../components/Building'
 import { Navbar } from '../components/Navbar'

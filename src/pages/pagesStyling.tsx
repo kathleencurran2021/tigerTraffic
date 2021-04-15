@@ -31,12 +31,4 @@ const GoButton = styled(Button)({
   verticalAlign: 'middle',
 })
 
-const CheckInPageContent = styled('div')({
-  fontFamily: 'serif',
-
-  '& .title': {
-    textAlign: 'center',
-  },
-})
-
-export { GoButton, CheckInPageContent }
+export { GoButton }

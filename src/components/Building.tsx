@@ -36,9 +36,9 @@ export interface BuildingState {
 
 let Julian: BuildingProps = {
   name: 'Julian',
-  peopleInside: 34,
+  peopleInside: 79,
   capacity: 80,
-  seatsAvailable: 46,
+  seatsAvailable: 1,
   studySpaces: 4,
   // studySpot: {
   //   name: 'Prevo',

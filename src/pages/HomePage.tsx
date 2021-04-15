@@ -6,6 +6,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import { CheckinContext } from '../context/CheckinContext'
 import { BuildingContext } from '../context/BuildingContext'
 import { Building } from '../components/Building'
+import { UserContext } from '../context/UserContext'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,15 +35,19 @@ export const HomePage: React.FC = () => {
   const classes = useStyles()
   const { checkin, setCheckin } = useContext(CheckinContext)
   const { building, setBuilding } = useContext(BuildingContext)
+  const { user, setUser } = useContext(UserContext)
 
   useEffect(() => {
     console.log('checkin home', checkin)
     console.log('trying building home', building)
+    console.log('and the user is', user)
   }, [checkin, building])
 
   const handleCheckout = () => {
     setCheckin(false)
     setBuilding(Building)
+    building.peopleInside -= 1
+    building.seatsAvailable += 1
   }
 
   return (

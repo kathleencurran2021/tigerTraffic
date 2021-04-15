@@ -53,6 +53,8 @@ export const MapModal: React.FC<ModalProps> = ({
     console.log('checked in?' + checkin)
     setCheckin(true)
     setBuilding(building)
+    building.peopleInside += 1
+    building.seatsAvailable -= 1
     handleClose()
   }
 
@@ -60,21 +62,40 @@ export const MapModal: React.FC<ModalProps> = ({
     <Dialog open={isOpen} onClose={handleClose} className={classes.modal}>
       <DialogContent>
         <h1 className={classes.text}>{title}</h1>
+        <Typography>Capacity: {Building.capacity} </Typography>
         <Typography>
           People currently inside: {Building.peopleInside}
         </Typography>
-        <Typography>Capacity: {Building.capacity} </Typography>
-        <Typography>Seats Available: {Building.seatsAvailable} </Typography>
+        {building.seatsAvailable != 0 ? (
+          <Typography>Seats Available: {Building.seatsAvailable} </Typography>
+        ) : (
+          <Typography>
+            Seats Available: <b>None</b>{' '}
+          </Typography>
+        )}
+
         {children}
         <DialogActions className={classes.button}>
-          <Button
-            className={classes.button}
-            variant="contained"
-            color="primary"
-            onClick={handleModalClick}
-          >
-            Check In
-          </Button>
+          {building.seatsAvailable != 0 ? (
+            <Button
+              className={classes.button}
+              variant="contained"
+              color="primary"
+              onClick={handleModalClick}
+            >
+              Check In
+            </Button>
+          ) : (
+            <Button
+              className={classes.button}
+              variant="contained"
+              color="primary"
+              onClick={handleModalClick}
+              disabled
+            >
+              Check In
+            </Button>
+          )}
           <Button
             className={classes.button}
             variant="contained"

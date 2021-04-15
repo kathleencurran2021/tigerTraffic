@@ -27,14 +27,33 @@ const BottomNavAction = styled(BottomNavigationAction)({
 const CheckinAccord = styled(Accordion)({
   padding: '2px 12px 2px 12px',
   display: 'block',
-  '&  .MuiAccordionSummary-root': {
+  '& .first-accordion-summary': {
     display: 'block',
-  },
-  '& .MuiAccordionSummary-expandIcon': {
-    '&::after': {
-      color: 'blue',
+    textAlign: 'center',
+    '& .MuiAccordionSummary-expandIcon': {
+      backgroundColor: 'pink',
+      textAlign: 'right',
+      '& .MuiIconButton-label': {
+        textAlign: 'end',
+        float: 'right',
+      },
+      // '&::after': {
+      //   color: 'blue',
+      // },
     },
   },
+  '& .first-acc-details': {
+    backgroundColor: 'pink',
+  },
+  // '&  .MuiAccordionSummary-root': {
+  //   display: 'block',
+  //   textAlign: 'center',
+  //   '& .MuiAccordionSummary-expandIcon': {
+  //     '&::after': {
+  //       color: 'blue',
+  //     },
+  //   },
+  // },
 })
 
 const AccordionSum = styled(AccordionSummary)({
@@ -55,4 +74,18 @@ const AccordionSum = styled(AccordionSummary)({
   // },
 })
 
-export { BottomNav, BottomNavAction, AccordionSum, CheckinAccord }
+const CheckInPageContent = styled('div')({
+  fontFamily: 'serif',
+
+  '& .title': {
+    textAlign: 'center',
+  },
+})
+
+export {
+  BottomNav,
+  CheckInPageContent,
+  BottomNavAction,
+  AccordionSum,
+  CheckinAccord,
+}

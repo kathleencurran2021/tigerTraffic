@@ -5,6 +5,7 @@ import { Building } from '../components/Building'
 import { Navbar } from '../components/Navbar'
 import { BuildingContext } from '../context/BuildingContext'
 import { CheckinContext } from '../context/CheckinContext'
+import { UserContext } from '../context/UserContext'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -20,22 +21,34 @@ const useStyles = makeStyles(() => ({
 export const UserPage = () => {
   const { checkin, setCheckin } = useContext(CheckinContext)
   const { building, setBuilding } = useContext(BuildingContext)
+  const { user, setUser } = useContext(UserContext)
   const classes = useStyles()
 
   useEffect(() => {
     console.log('trying checkin user', checkin)
     console.log('hb building?', building)
+    console.log('checking user for the user page', user)
   }, [checkin, building])
+
+  const handleCheckout = () => {
+    setCheckin(false)
+    setBuilding(Building)
+    building.peopleInside -= 1
+    building.seatsAvailable += 1
+  }
 
   return (
     <IonPage>
       <IonContent className={classes.root}>
         <div style={{ marginLeft: '.5rem' }}>
+          {/* if you are checked in, include the building, if note print None */}
           <h2 style={{ textAlign: 'center' }}>
             Current Building:{' '}
             {(checkin && building != Building && <b>{building.name}</b>) ||
               'None'}
           </h2>
+          <h3>You are currently logged in as {user.email}</h3>
+
           {(checkin && building != Building && (
             <IonText>
               You have been in <b>{building.name}</b> for <b>'27.6 minutes'</b>
@@ -51,7 +64,9 @@ export const UserPage = () => {
             <br></br>
             <IonText>Julian: 146.8 minutes</IonText>
           </div> */}
-          <Button className={classes.button}>Check Out of Spot</Button>
+          <Button className={classes.button} onClick={handleCheckout}>
+            Check Out of Spot
+          </Button>
         </div>
       </IonContent>
       <Navbar></Navbar>

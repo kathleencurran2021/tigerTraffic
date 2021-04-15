@@ -78,8 +78,6 @@ export const MapModal: React.FC<ModalProps> = ({
             className={classes.button}
             variant="contained"
             color="primary"
-            // component={RouterLink}
-            // to={'/checkin'}
             onClick={handleModalClick}
           >
             Check In

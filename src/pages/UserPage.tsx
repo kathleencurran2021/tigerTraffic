@@ -12,7 +12,9 @@ const useStyles = makeStyles(() => ({
     textAlign: 'center',
   },
   button: {
-    color: 'yellow',
+    backgroundColor: 'red',
+    marginTop: '4rem',
+    height: '3rem',
   },
 }))
 

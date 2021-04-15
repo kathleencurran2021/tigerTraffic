@@ -6,18 +6,20 @@ import {
   IonPage,
   IonText,
 } from '@ionic/react'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { Navbar } from '../components/Navbar'
 import TextField from '@material-ui/core/TextField'
 import { useHistory } from 'react-router-dom'
 import { GoButton } from './pagesStyling'
+import { UserContext } from '../context/UserContext'
 
 export const SplashPage = () => {
   const history = useHistory()
   const [textVal, setTextVal] = useState('')
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
+  const { user, setUser } = useContext(UserContext)
 
   const handleEmail = () => {
     //fix this syntax omg
@@ -25,6 +27,7 @@ export const SplashPage = () => {
       setError(false)
       console.log(error)
       // setIsAuthorized(true)
+
       history.push('/homepage')
     } else {
       setError(true)

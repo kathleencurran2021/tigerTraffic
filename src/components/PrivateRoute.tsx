@@ -1,6 +1,5 @@
 import React from 'react'
 import { Route, Redirect, RouteProps } from 'react-router-dom'
-// import { isLogin } from '../utils'
 
 interface PrivateRouteProps extends RouteProps {
   children: React.ReactNode

@@ -1,8 +1,4 @@
-import { number } from 'prop-types'
 import React from 'react'
-
-//static: name, capacity, studySpaces
-//dynamic: peopleInside, canCheckIn, seatsAvailable
 
 interface SomeStudySpot {
   name: string

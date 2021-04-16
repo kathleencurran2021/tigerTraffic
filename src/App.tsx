@@ -27,8 +27,8 @@ import '@ionic/react/css/display.css'
 /* Theme variables */
 import './theme/variables.css'
 import { SplashPage } from './pages/SplashPage'
-import { useState } from 'react'
-import { Building, BuildingProps, Julian } from './components/Building'
+import { useEffect, useState } from 'react'
+import { Building, BuildingProps, Hoover, Julian } from './components/Building'
 import { BuildingContext } from './context/BuildingContext'
 import { CheckinContext } from './context/CheckinContext'
 import { DefaultUser, UserProps } from './components/User'
@@ -40,6 +40,12 @@ const App: React.FC = () => {
   const [checkin, setCheckin] = useState<boolean>(false)
   const [user, setUser] = useState<UserProps>(DefaultUser)
   const [time, setTime] = useState<number>(0)
+
+  useEffect(() => {
+    if (building == Hoover && time > 20) {
+      setCheckin(false)
+    }
+  })
 
   return (
     <IonApp>

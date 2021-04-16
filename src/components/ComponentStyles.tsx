@@ -24,68 +24,68 @@ const BottomNavAction = styled(BottomNavigationAction)({
   },
 })
 
-const CheckinAccord = styled(Accordion)({
-  padding: '2px 12px 2px 12px',
-  display: 'block',
-  '& .first-accordion-summary': {
-    display: 'block',
-    textAlign: 'center',
-    '& .MuiAccordionSummary-expandIcon': {
-      backgroundColor: 'pink',
-      textAlign: 'right',
-      '& .MuiIconButton-label': {
-        textAlign: 'end',
-        float: 'right',
-      },
-      // '&::after': {
-      //   color: 'blue',
-      // },
-    },
-  },
-  '& .first-acc-details': {
-    backgroundColor: 'pink',
-  },
-  // '&  .MuiAccordionSummary-root': {
-  //   display: 'block',
-  //   textAlign: 'center',
-  //   '& .MuiAccordionSummary-expandIcon': {
-  //     '&::after': {
-  //       color: 'blue',
-  //     },
-  //   },
-  // },
-})
+// const CheckinAccord = styled(Accordion)({
+//   padding: '2px 12px 2px 12px',
+//   display: 'block',
+//   '& .first-accordion-summary': {
+//     display: 'block',
+//     textAlign: 'center',
+//     '& .MuiAccordionSummary-expandIcon': {
+//       backgroundColor: '',
+//       textAlign: 'right',
+//       '& .MuiIconButton-label': {
+//         textAlign: 'end',
+//         float: 'right',
+//       },
+//       // '&::after': {
+//       //   color: 'blue',
+//       // },
+//     },
+//   },
+//   '& .first-acc-details': {
+//     backgroundColor: '',
+//   },
+// '&  .MuiAccordionSummary-root': {
+//   display: 'block',
+//   textAlign: 'center',
+//   '& .MuiAccordionSummary-expandIcon': {
+//     '&::after': {
+//       color: 'blue',
+//     },
+//   },
+// },
+// })
 
-const AccordionSum = styled(AccordionSummary)({
-  display: 'block',
-  '& .MuiAccordionSummary-content': {
-    marginTop: '1rem',
-    marginBottom: 0,
-    display: 'block',
-  },
-  '& p': {
-    width: '100%',
-  },
-  // '& .MuiAccordionSummary-expandIcon': {
-  //   color: 'red',
-  //   padding: '2px 0px 8px 0px',
-  //   textAlign: 'right',
-  //   marginLeft: '90%',
-  // },
-})
+// const AccordionSum = styled(AccordionSummary)({
+//   display: 'block',
+//   '& .MuiAccordionSummary-content': {
+//     marginTop: '1rem',
+//     marginBottom: 0,
+//     display: 'block',
+//   },
+//   '& p': {
+//     width: '100%',
+//   },
+// '& .MuiAccordionSummary-expandIcon': {
+//   color: 'red',
+//   padding: '2px 0px 8px 0px',
+//   textAlign: 'right',
+//   marginLeft: '90%',
+// },
+// })
 
-const CheckInPageContent = styled('div')({
-  fontFamily: 'serif',
+// const CheckInPageContent = styled('div')({
+//   fontFamily: 'serif',
 
-  '& .title': {
-    textAlign: 'center',
-  },
-})
+//   '& .title': {
+//     textAlign: 'center',
+//   },
+// })
 
 export {
   BottomNav,
-  CheckInPageContent,
+  // CheckInPageContent,
   BottomNavAction,
-  AccordionSum,
-  CheckinAccord,
+  // AccordionSum,
+  // CheckinAccord,
 }

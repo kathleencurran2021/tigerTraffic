@@ -56,4 +56,6 @@ let Hoover: BuildingProps = {
   studySpaces: 0,
 }
 
-export { Building, Julian, Hoover }
+const buildingArray = [Julian, Hoover]
+
+export { Building, Julian, Hoover, buildingArray }

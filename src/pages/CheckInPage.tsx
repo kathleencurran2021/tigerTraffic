@@ -9,13 +9,15 @@ import { AccordionSummary } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
 import React, { useContext, useEffect, useState } from 'react'
 import { Navbar } from '../components/Navbar'
-import { useStopwatch } from 'react-timer-hook'
-import { BuildingProps, Building } from './../components/Building'
+
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import {
-  AccordionSum,
-  CheckinAccord,
-  CheckInPageContent,
-} from '../components/ComponentStyles'
+  BuildingProps,
+  Building,
+  Hoover,
+  Julian,
+} from './../components/Building'
+import { CheckinPageContent } from '../styles/CheckinPageStyles'
 import { CheckinContext } from '../context/CheckinContext'
 import { BuildingContext } from '../context/BuildingContext'
 import { TimeContext } from '../context/TimeContext'
@@ -43,30 +45,30 @@ const useStyles = makeStyles(() => ({
 }))
 
 export const CheckInPage = () => {
-  const { seconds, minutes, isRunning, start, reset } = useStopwatch({
-    autoStart: false,
-  })
   const { checkin, setCheckin } = useContext(CheckinContext)
   const { building, setBuilding } = useContext(BuildingContext)
   const { time, setTime } = useContext(TimeContext)
   const [isPlaying, setPlaying] = useState<boolean>(false)
+
+  const [expanded, setExpanded] = React.useState<string | false>(false)
+
   const classes = useStyles()
   const delay = 1000
 
-  const handleCheckin = () => {
+  const handleChange = (panel: string) => (
+    event: React.ChangeEvent<{}>,
+    isExpanded: boolean
+  ) => {
+    setExpanded(isExpanded ? panel : false)
+  }
+
+  const handleCheckin = (Building: BuildingProps) => {
     setCheckin(true)
     console.log()
-    setBuilding(building)
-
+    setBuilding(Building)
     building.peopleInside += 1
     building.seatsAvailable -= 1
-
-    // start()
-    // setTime(time + 1)
     setPlaying(!isPlaying)
-
-    console.log('after start seconds', seconds)
-    console.log('is there time?')
   }
 
   UseInterval(
@@ -78,81 +80,91 @@ export const CheckInPage = () => {
 
   useEffect(() => {
     console.log('trying checkin checkinpage', checkin)
-    console.log('hb building?', building)
-    console.log(seconds)
-    console.log('time', time)
-  }, [checkin, building, time])
+    console.log('hb building CHECKIN?', building)
+  }, [checkin, building])
 
   return (
-    <CheckInPageContent>
-      <p>TIME: {time}</p>
-      <h1 className={classes.root}>Check In {Building.name}</h1>
-      <CheckinAccord className="main-accordion">
-        <AccordionSum
+    <CheckinPageContent>
+      <h1 className={classes.root}>Check In </h1>
+      <Accordion
+        className="Julian-accordion"
+        expanded={expanded === 'panel1'}
+        onChange={handleChange('panel1')}>
+        <AccordionSummary
           className="first-accordion-summary"
-          expandIcon={`+`}
-          aria-controls="panel1a-content"
-          id="panel1a-header">
-          <h1>{building.name}J</h1>
-        </AccordionSum>
-        <AccordionDetails className="first-acc-details">
-          <AccordionSum
-            expandIcon={`+`}
-            aria-controls="panel2a-content"
-            id="panel2a-header">
-            <Typography>{`${building.name} total capacity: ${building.capacity}`}</Typography>
-            <Typography>{`Seats in use: ${building.peopleInside}`}</Typography>
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1bh-content"
+          id="panel1bh-header">
+          <h1>Julian</h1>
+        </AccordionSummary>
 
-            {/* if the amount of people insde is equal to the building's capacity, then display FULL instead of seat available */}
-            {building.peopleInside == building.capacity ? (
-              <Typography>
-                Spot is <b>FULL</b>
-              </Typography>
-            ) : (
-              <Typography>{`Seats Available: ${building.seatsAvailable}`}</Typography>
-            )}
-            {/* disables button if checked in */}
-            {checkin == true ? (
-              <Button className={classes.button} disabled>
-                Check In
-              </Button>
-            ) : (
-              <Button className={classes.button} onClick={handleCheckin}>
-                Check In
-              </Button>
-            )}
-          </AccordionSum>
-        </AccordionDetails>
-        {/* <AccordionDetails>
-          <AccordionSum
-            expandIcon={`+`}
-            aria-controls="panel3a-content"
-            id="panel3a-header"
-          >
-            <Typography>First Floor</Typography>
-          </AccordionSum>
-        </AccordionDetails>
-        {/* <AccordionDetails>
-          <AccordionSum
-            expandIcon={`+`}
-            aria-controls="panel2a-content"
-            id="panel2a-header"
-          >
-            <Typography>Prevo</Typography>
-          </AccordionSum>
-        </AccordionDetails> */}
-        {/* <AccordionDetails>
-          <AccordionSum
-            expandIcon={`+`}
-            aria-controls="panel3a-content"
-            id="panel3a-header"
-          >
-            <Typography>First Floor</Typography>
-          </AccordionSum>
-        </AccordionDetails> */}
-      </CheckinAccord>
+        {/* I know theres a way to loop this so I dont have to do it so many times */}
 
+        <AccordionDetails className="Julian-details">
+          <Typography>{`${Julian.name} total capacity: ${Julian.capacity}`}</Typography>
+          <Typography>{`Seats in use: ${Julian.peopleInside}`}</Typography>
+
+          {/* if the people insde is equal to the building's capacity, then display FULL instead of seat available */}
+          {Julian.peopleInside == Julian.capacity ? (
+            <Typography>
+              Spot is <b>FULL</b>
+            </Typography>
+          ) : (
+            <Typography>{`Seats Available: ${Julian.seatsAvailable}`}</Typography>
+          )}
+          {/* disables button if checked in */}
+          {checkin == true ? (
+            <Button className={classes.button} disabled>
+              Check In
+            </Button>
+          ) : (
+            <Button
+              className={classes.button}
+              onClick={() => handleCheckin(Julian)}>
+              Check In
+            </Button>
+          )}
+        </AccordionDetails>
+      </Accordion>
+      <Accordion
+        className="Julian-accordion"
+        expanded={expanded === 'panel2'}
+        onChange={handleChange('panel2')}>
+        <AccordionSummary
+          className="second-accordion-summary"
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel2bh-content"
+          id="panel2bh-header">
+          <h1>Hoover</h1>
+        </AccordionSummary>
+
+        <AccordionDetails className="Hoover-details">
+          <Typography>{`${Hoover.name} total capacity: ${Hoover.capacity}`}</Typography>
+          <Typography>{`Seats in use: ${Hoover.peopleInside}`}</Typography>
+
+          {/* if the people insde is equal to the building's capacity, then display FULL instead of seat available */}
+          {Hoover.peopleInside == Hoover.capacity ? (
+            <Typography>
+              Spot is <b>FULL</b>
+            </Typography>
+          ) : (
+            <Typography>{`Seats Available: ${Hoover.seatsAvailable}`}</Typography>
+          )}
+          {/* disables button if checked in */}
+          {checkin == true ? (
+            <Button className={classes.button} disabled>
+              Check In
+            </Button>
+          ) : (
+            <Button
+              className={classes.button}
+              onClick={() => handleCheckin(Hoover)}>
+              Check In
+            </Button>
+          )}
+        </AccordionDetails>
+      </Accordion>
       <Navbar />
-    </CheckInPageContent>
+    </CheckinPageContent>
   )
 }

@@ -15,7 +15,12 @@ import {
   RoyButton,
   AsburyButton,
 } from './../components/BuildingStyling'
-import { BuildingProps, Hoover, Julian } from './../components/Building'
+import {
+  Building,
+  BuildingProps,
+  Hoover,
+  Julian,
+} from './../components/Building'
 import { BuildingContext } from '../context/BuildingContext'
 
 const useStyles = makeStyles((theme) => ({
@@ -46,6 +51,7 @@ export const MapPage = () => {
 
   const handleClose = () => {
     setOpen(false)
+    setBuilding(Building)
   }
 
   return (
@@ -69,8 +75,7 @@ export const MapPage = () => {
             </PCCMButton>
             <JulianButton
               variant="contained"
-              onClick={() => handleOpen(Julian)}
-            >
+              onClick={() => handleOpen(Julian)}>
               Julian
             </JulianButton>
             <UBButton variant="contained" disabled>
@@ -78,8 +83,7 @@ export const MapPage = () => {
             </UBButton>
             <HooverButton
               variant="contained"
-              onClick={() => handleOpen(Hoover)}
-            >
+              onClick={() => handleOpen(Hoover)}>
               Hoover
             </HooverButton>
             <GCPAButton variant="contained" disabled>
@@ -106,8 +110,7 @@ export const MapPage = () => {
           isOpen={open}
           title={building.name}
           handleClose={handleClose}
-          Building={building}
-        >
+          Building={building}>
           <h1>Welcome to {building.name}</h1>
         </MapModal>
       </IonContent>

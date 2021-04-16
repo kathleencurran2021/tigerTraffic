@@ -87,9 +87,18 @@ export const UserPage = () => {
             <br></br>
             <IonText>Julian: 146.8 minutes</IonText>
           </div> */}
-          <Button className={classes.button} onClick={handleCheckout}>
-            Check Out of Spot
-          </Button>
+          {checkin == true ? (
+            <Button className={classes.button} onClick={handleCheckout}>
+              Check Out of Spot
+            </Button>
+          ) : (
+            <Button
+              className={classes.button}
+              disabled
+              onClick={handleCheckout}>
+              Check Out of Spot
+            </Button>
+          )}
         </div>
       </IonContent>
       <Navbar></Navbar>

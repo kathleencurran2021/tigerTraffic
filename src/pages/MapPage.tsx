@@ -14,7 +14,7 @@ import {
   EastCoButton,
   RoyButton,
   AsburyButton,
-} from './../components/BuildingStyling'
+} from '../styles/BuildingStyling'
 import {
   Building,
   BuildingProps,
@@ -39,7 +39,7 @@ export const MapPage = () => {
   const { building, setBuilding } = useContext(BuildingContext)
 
   useEffect(() => {
-    console.log('trying checkin', building)
+    console.log('trying mapPage', building)
   }, [building])
 
   const handleOpen = (someBuilding: BuildingProps) => {
@@ -51,7 +51,7 @@ export const MapPage = () => {
 
   const handleClose = () => {
     setOpen(false)
-    setBuilding(Building)
+    // setBuilding(Building)
   }
 
   return (

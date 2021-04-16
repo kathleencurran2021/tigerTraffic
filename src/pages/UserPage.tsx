@@ -16,7 +16,8 @@ const useStyles = makeStyles(() => ({
     marginLeft: '.5rem',
   },
   button: {
-    backgroundColor: 'red',
+    backgroundColor: '#ffc72c',
+    color: 'black',
     marginTop: '4rem',
     height: '3rem',
   },

@@ -53,25 +53,26 @@ export const MapModal: React.FC<ModalProps> = ({
     console.log('checked in?' + checkin)
     setCheckin(true)
     setBuilding(building)
+    console.log('inside click', building)
     building.peopleInside += 1
     building.seatsAvailable -= 1
     handleClose()
   }
 
-  const handleView = () => {
-    setBuilding(Building)
-  }
+  // const handleView = () => {
+  //   setBuilding(Building)
+  // }
 
   return (
     <Dialog open={isOpen} onClose={handleClose} className={classes.modal}>
       <DialogContent>
         <h1 className={classes.text}>{title}</h1>
-        <Typography>Capacity: {building.capacity} </Typography>
+        <Typography>Capacity: {Building.capacity} </Typography>
         <Typography>
-          People currently inside: {building.peopleInside}
+          People currently inside: {Building.peopleInside}
         </Typography>
         {building.seatsAvailable != 0 ? (
-          <Typography>Seats Available: {building.seatsAvailable} </Typography>
+          <Typography>Seats Available: {Building.seatsAvailable} </Typography>
         ) : (
           <Typography>
             Seats Available: <b>None</b>{' '}
@@ -85,7 +86,7 @@ export const MapModal: React.FC<ModalProps> = ({
               className={classes.button}
               variant="contained"
               color="primary"
-              onClick={handleModalClick}>
+              onClick={() => handleModalClick()}>
               Check In
             </Button>
           ) : (
@@ -93,7 +94,7 @@ export const MapModal: React.FC<ModalProps> = ({
               className={classes.button}
               variant="contained"
               color="primary"
-              onClick={handleModalClick}
+              // onClick={handleModalClick}
               disabled>
               Check In
             </Button>
@@ -103,8 +104,8 @@ export const MapModal: React.FC<ModalProps> = ({
             variant="contained"
             component={RouterLink}
             to={'/checkin'}
-            onClick={handleView}>
-            {' '}
+            // onClick={handleView}
+          >
             View More
           </Button>
         </DialogActions>

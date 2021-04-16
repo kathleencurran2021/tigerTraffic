@@ -71,6 +71,15 @@ export const CheckInPage = () => {
     setPlaying(!isPlaying)
   }
 
+  const handleCheckout = () => {
+    setCheckin(false)
+    setBuilding(Building)
+    building.peopleInside -= 1
+    building.seatsAvailable += 1
+    setPlaying(false)
+    setTime(0)
+  }
+
   UseInterval(
     () => {
       setTime(time + 1)
@@ -164,6 +173,10 @@ export const CheckInPage = () => {
           )}
         </AccordionDetails>
       </Accordion>
+      {/* <Button className={classes.button} disabled onClick={handleCheckout}>
+        Check Out
+      </Button> */}
+
       <Navbar />
     </CheckinPageContent>
   )

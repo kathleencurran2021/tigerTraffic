@@ -17,10 +17,17 @@ const BottomNav = styled(BottomNavigation)({
 })
 
 const BottomNavAction = styled(BottomNavigationAction)({
+  // '&:hover': {
+  //   backgroundColor: 'gray',
+  // },
   color: 'black',
   '& span': {
     fontSize: '1.7rem',
     color: 'black',
+  },
+  '& .MuiSvgIcon-root': {
+    height: '2em',
+    fontSize: '2.5rem',
   },
 })
 

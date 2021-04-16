@@ -1,6 +1,6 @@
 import { IonContent, IonPage, IonText } from '@ionic/react'
 import { Button, makeStyles } from '@material-ui/core'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Navbar } from '../components/Navbar'
 import { Link as RouterLink } from 'react-router-dom'
 import { CheckinContext } from '../context/CheckinContext'
@@ -8,6 +8,7 @@ import { BuildingContext } from '../context/BuildingContext'
 import { Building } from '../components/Building'
 import { UserContext } from '../context/UserContext'
 import { TimeContext } from '../context/TimeContext'
+import { UseInterval } from '../components/Stopwatch'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,12 +39,26 @@ export const HomePage: React.FC = () => {
   const { building, setBuilding } = useContext(BuildingContext)
   const { user, setUser } = useContext(UserContext)
   const { time, setTime } = useContext(TimeContext)
+  const [isPlaying, setPlaying] = useState<boolean>(false)
+  const delay = 1000
 
   useEffect(() => {
     console.log('checkin home', checkin)
     console.log('trying building home', building)
     // console.log('and the user is', user)
   }, [checkin, building])
+
+  useEffect(() => {
+    checkin ? setPlaying(!isPlaying) : setPlaying(false)
+    console.log('playing?', isPlaying)
+  }, [])
+
+  UseInterval(
+    () => {
+      setTime(time + 1)
+    },
+    isPlaying ? delay : null
+  )
 
   const handleCheckout = () => {
     setCheckin(false)

@@ -1,6 +1,6 @@
 import { IonContent, IonPage, IonText } from '@ionic/react'
 import { Box, Container, makeStyles, Typography } from '@material-ui/core'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Navbar } from '../components/Navbar'
 import { MapModal } from './../components/MapModal'
 import {
@@ -22,6 +22,9 @@ import {
   Julian,
 } from './../components/Building'
 import { BuildingContext } from '../context/BuildingContext'
+import { CheckinContext } from '../context/CheckinContext'
+import { TimeContext } from '../context/TimeContext'
+import { UseInterval } from '../components/Stopwatch'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,13 +37,31 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export const MapPage = () => {
+  const delay = 1000
+
   const classes = useStyles()
+  const { checkin, setCheckin } = useContext(CheckinContext)
+  const { time, setTime } = useContext(TimeContext)
+
   const [open, setOpen] = React.useState(false)
   const { building, setBuilding } = useContext(BuildingContext)
+  const [isPlaying, setPlaying] = useState<boolean>(false)
 
   useEffect(() => {
     console.log('trying mapPage', building)
   }, [building])
+
+  useEffect(() => {
+    checkin ? setPlaying(!isPlaying) : setPlaying(false)
+    console.log('playing?', isPlaying)
+  }, [])
+
+  UseInterval(
+    () => {
+      setTime(time + 1)
+    },
+    isPlaying ? delay : null
+  )
 
   const handleOpen = (someBuilding: BuildingProps) => {
     setOpen(true)

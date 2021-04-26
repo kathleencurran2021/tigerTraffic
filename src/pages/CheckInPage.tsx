@@ -122,7 +122,7 @@ export const CheckInPage = () => {
             <Typography>{`Seats Available: ${Julian.seatsAvailable}`}</Typography>
           )}
           {/* disables button if checked in */}
-          {checkin == true ? (
+          {checkin == true || Julian.peopleInside == Julian.capacity ? (
             <Button className={classes.button} disabled>
               Check In
             </Button>

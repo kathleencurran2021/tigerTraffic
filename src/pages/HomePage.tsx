@@ -85,7 +85,7 @@ export const HomePage: React.FC = () => {
               variant="contained"
               color="primary"
               component={RouterLink}
-              to={'/map'}>
+              to={'/checkin'}>
               Check In
             </Button>
           )) || (

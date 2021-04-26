@@ -70,7 +70,7 @@ export const UserPage = () => {
             {(checkin && building != Building && <b> {building.name}</b>) ||
               ' None'}
           </h2>
-          <h3>You are currently logged in as {user.email}</h3>
+          <h3>You are currently logged in with {user.email}</h3>
 
           {(checkin && building != Building && (
             <IonText>

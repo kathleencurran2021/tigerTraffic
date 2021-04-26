@@ -81,7 +81,7 @@ export const MapModal: React.FC<ModalProps> = ({
 
         {children}
         <DialogActions className={classes.button}>
-          {building.seatsAvailable != 0 ? (
+          {building.seatsAvailable != 0 && checkin == false ? (
             <Button
               className={classes.button}
               variant="contained"

@@ -44,6 +44,9 @@ const App: React.FC = () => {
   useEffect(() => {
     if (building == Hoover && time > 20) {
       setCheckin(false)
+      setTime(0)
+      building.peopleInside -= 1
+      building.seatsAvailable += 1
     }
   })
 

@@ -1,32 +1,21 @@
 import React from 'react'
 
-interface SomeStudySpot {
-  name: string
-  peopleInside: number
-  capacity: number
-  canCheckIn: boolean
-}
-
 export interface BuildingProps {
   name: string
   peopleInside: number
   capacity: number
   seatsAvailable: number
-  studySpaces: number
-  // studySpot: {
-  //   name: string
-  //   peopleInside: number
-  //   capacity: number
-  //   canCheckIn: boolean
-  // }
+  // studySpaces: number
+  studySpots: string[]
 }
+
 const Building: BuildingProps = {
   name: '',
   peopleInside: 0,
   capacity: 0,
   seatsAvailable: 0,
-  studySpaces: 0,
-  // studySpot: SomeStudySpot,
+  // studySpaces: 0,
+  studySpots: [],
 }
 
 export interface BuildingState {
@@ -39,13 +28,8 @@ let Julian: BuildingProps = {
   peopleInside: 79,
   capacity: 80,
   seatsAvailable: 1,
-  studySpaces: 4,
-  // studySpot: {
-  //   name: 'Prevo',
-  //   peopleInside: 3,
-  //   capacity: 15,
-  //   canCheckIn: true,
-  // },
+  // studySpaces: 4,
+  studySpots: ['Prevo', 'First Floor', 'Second Floor'],
 }
 
 let Hoover: BuildingProps = {
@@ -53,7 +37,8 @@ let Hoover: BuildingProps = {
   peopleInside: 100,
   capacity: 230,
   seatsAvailable: 130,
-  studySpaces: 0,
+  // studySpaces: 0,
+  studySpots: [],
 }
 
 let GCPA: BuildingProps = {
@@ -61,7 +46,7 @@ let GCPA: BuildingProps = {
   capacity: 97,
   peopleInside: 41,
   seatsAvailable: 97 - 41,
-  studySpaces: 2,
+  studySpots: ['First Floor', 'GreatHall'],
 }
 
 let Roy: BuildingProps = {
@@ -69,7 +54,7 @@ let Roy: BuildingProps = {
   capacity: 290,
   peopleInside: 172,
   seatsAvailable: 290 - 172,
-  studySpaces: 4,
+  studySpots: ['Basement', 'First Floor', 'Second Floor', 'Third Floor'],
 }
 
 let Harrison: BuildingProps = {
@@ -77,7 +62,7 @@ let Harrison: BuildingProps = {
   capacity: 51,
   peopleInside: 2,
   seatsAvailable: 49,
-  studySpaces: 3,
+  studySpots: ['First Floor', 'Second Floor', 'Third Floor'],
 }
 
 const buildingArray = [Julian, Hoover, Roy, GCPA]

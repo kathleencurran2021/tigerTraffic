@@ -6,8 +6,7 @@ const Building: BuildingProps = {
   peopleInside: 0,
   capacity: 0,
   seatsAvailable: 0,
-  studySpaces: 0,
-  // studySpot: SomeStudySpot,
+  studySpots: [],
 }
 
 const defaultBuildingState: BuildingState = {

@@ -20,6 +20,8 @@ import {
   BuildingProps,
   Hoover,
   Julian,
+  GCPA,
+  Roy,
 } from './../components/Building'
 import { BuildingContext } from '../context/BuildingContext'
 import { CheckinContext } from '../context/CheckinContext'
@@ -107,7 +109,7 @@ export const MapPage = () => {
               onClick={() => handleOpen(Hoover)}>
               Hoover
             </HooverButton>
-            <GCPAButton variant="contained" disabled>
+            <GCPAButton variant="contained" onClick={() => handleOpen(GCPA)}>
               GCPA
             </GCPAButton>
             <HarrisonButton variant="contained" disabled>
@@ -116,7 +118,7 @@ export const MapPage = () => {
             <EastCoButton variant="contained" disabled>
               East<br></br>College
             </EastCoButton>
-            <RoyButton variant="contained" disabled>
+            <RoyButton variant="contained" onClick={() => handleOpen(Roy)}>
               Roy O.<br></br>West
             </RoyButton>
             <AsburyButton variant="contained" disabled>

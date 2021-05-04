@@ -56,6 +56,30 @@ let Hoover: BuildingProps = {
   studySpaces: 0,
 }
 
-const buildingArray = [Julian, Hoover]
+let GCPA: BuildingProps = {
+  name: 'GCPA',
+  capacity: 97,
+  peopleInside: 41,
+  seatsAvailable: 97 - 41,
+  studySpaces: 2,
+}
 
-export { Building, Julian, Hoover, buildingArray }
+let Roy: BuildingProps = {
+  name: 'Roy',
+  capacity: 290,
+  peopleInside: 172,
+  seatsAvailable: 290 - 172,
+  studySpaces: 4,
+}
+
+let Harrison: BuildingProps = {
+  name: 'Harrison',
+  capacity: 51,
+  peopleInside: 2,
+  seatsAvailable: 49,
+  studySpaces: 3,
+}
+
+const buildingArray = [Julian, Hoover, Roy, GCPA]
+
+export { Building, Julian, Hoover, GCPA, Roy, buildingArray }

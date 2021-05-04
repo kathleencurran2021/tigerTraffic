@@ -8,6 +8,7 @@ import {
 import React from 'react'
 
 const CheckinPageContent = styled('div')({
+  overflow: 'scroll',
   '& .Julian-details': {
     display: 'block',
   },

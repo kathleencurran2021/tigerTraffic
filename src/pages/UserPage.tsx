@@ -80,23 +80,15 @@ export const UserPage = () => {
           )) ||
             ''}
 
-          {/* <h3 style={{ textAlign: 'center' }}>Your Check-ins:</h3> */}
-          {/* <div>
-            <IonText>Julian: 87.2 minutes</IonText>
-            <br></br>
-            <IonText>Julian: 47 minutes</IonText>
-            <br></br>
-            <IonText>Julian: 146.8 minutes</IonText>
-          </div> */}
           {checkin == true ? (
-            <Button className={classes.button} onClick={handleCheckout}>
-              Check Out of Spot
-            </Button>
-          ) : (
             <Button
               className={classes.button}
               disabled
               onClick={handleCheckout}>
+              Check Out of Spot
+            </Button>
+          ) : (
+            <Button className={classes.button} onClick={handleCheckout}>
               Check Out of Spot
             </Button>
           )}

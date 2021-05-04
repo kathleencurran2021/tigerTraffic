@@ -17,6 +17,7 @@ import {
   Building,
   Hoover,
   Julian,
+  buildingArray,
 } from './../components/Building'
 import { CheckinPageContent } from '../styles/CheckinPageStyles'
 import { CheckinContext } from '../context/CheckinContext'
@@ -96,87 +97,48 @@ export const CheckInPage = () => {
   return (
     <CheckinPageContent>
       <h1 className={classes.root}>Check In </h1>
-      <Accordion
-        className="Julian-accordion"
-        expanded={expanded === 'panel1'}
-        onChange={handleChange('panel1')}>
-        <AccordionSummary
-          className="first-accordion-summary"
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1bh-content"
-          id="panel1bh-header">
-          <h1>Julian</h1>
-        </AccordionSummary>
+      {/* maps each building and creates an accordion for each  */}
+      {buildingArray.map((build, index) => (
+        <Accordion
+          className={build.name + 'accordion'}
+          expanded={expanded == 'panel' + index}
+          onChange={handleChange('panel' + index)}>
+          <AccordionSummary
+            className={'accordion-summmary-' + index}
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls={'panel' + index + 'bh-content'}
+            id={'panel' + index + 'bh-header'}>
+            <h1>{build.name}</h1>
+          </AccordionSummary>
+          <AccordionDetails
+            style={{ display: 'block' }}
+            className={build.name + '-details'}>
+            <Typography>{`${build.name} total capacity: ${build.capacity}\n`}</Typography>
+            <br></br>
+            <Typography>{`Seats in use: ${build.peopleInside}`}</Typography>
+            {/* Checks to see if the spot is full */}
+            {build.peopleInside == build.capacity ? (
+              <Typography>
+                Spot is <b>FULL</b>
+              </Typography>
+            ) : (
+              <Typography>{`Seats Available: ${build.seatsAvailable}`}</Typography>
+            )}
 
-        {/* I know theres a way to loop this so I dont have to do it so many times */}
-
-        <AccordionDetails className="Julian-details">
-          <Typography>{`${Julian.name} total capacity: ${Julian.capacity}`}</Typography>
-          <Typography>{`Seats in use: ${Julian.peopleInside}`}</Typography>
-
-          {/* if the people insde is equal to the building's capacity, then display FULL instead of seat available */}
-          {Julian.peopleInside == Julian.capacity ? (
-            <Typography>
-              Spot is <b>FULL</b>
-            </Typography>
-          ) : (
-            <Typography>{`Seats Available: ${Julian.seatsAvailable}`}</Typography>
-          )}
-          {/* disables button if checked in */}
-          {checkin == true || Julian.peopleInside == Julian.capacity ? (
-            <Button className={classes.button} disabled>
-              Check In
-            </Button>
-          ) : (
-            <Button
-              className={classes.button}
-              onClick={() => handleCheckin(Julian)}>
-              Check In
-            </Button>
-          )}
-        </AccordionDetails>
-      </Accordion>
-      <Accordion
-        className="Julian-accordion"
-        expanded={expanded === 'panel2'}
-        onChange={handleChange('panel2')}>
-        <AccordionSummary
-          className="second-accordion-summary"
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2bh-content"
-          id="panel2bh-header">
-          <h1>Hoover</h1>
-        </AccordionSummary>
-
-        <AccordionDetails className="Hoover-details">
-          <Typography>{`${Hoover.name} total capacity: ${Hoover.capacity}`}</Typography>
-          <Typography>{`Seats in use: ${Hoover.peopleInside}`}</Typography>
-
-          {/* if the people insde is equal to the building's capacity, then display FULL instead of seat available */}
-          {Hoover.peopleInside == Hoover.capacity ? (
-            <Typography>
-              Spot is <b>FULL</b>
-            </Typography>
-          ) : (
-            <Typography>{`Seats Available: ${Hoover.seatsAvailable}`}</Typography>
-          )}
-          {/* disables button if checked in */}
-          {checkin == true ? (
-            <Button className={classes.button} disabled>
-              Check In
-            </Button>
-          ) : (
-            <Button
-              className={classes.button}
-              onClick={() => handleCheckin(Hoover)}>
-              Check In
-            </Button>
-          )}
-        </AccordionDetails>
-      </Accordion>
-      {/* <Button className={classes.button} disabled onClick={handleCheckout}>
-        Check Out
-      </Button> */}
+            {checkin == true || build.peopleInside == build.capacity ? (
+              <Button className={classes.button} disabled>
+                Check In
+              </Button>
+            ) : (
+              <Button
+                className={classes.button}
+                onClick={() => handleCheckin(build)}>
+                Check In
+              </Button>
+            )}
+          </AccordionDetails>
+        </Accordion>
+      ))}
 
       <Navbar />
     </CheckinPageContent>

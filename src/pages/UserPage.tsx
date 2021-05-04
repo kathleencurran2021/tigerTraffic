@@ -20,6 +20,10 @@ const useStyles = makeStyles(() => ({
     color: 'black',
     marginTop: '4rem',
     height: '3rem',
+    '&:hover': {
+      backgroundColor: '#63666a',
+      color: 'white',
+    },
   },
 }))
 
@@ -54,6 +58,7 @@ export const UserPage = () => {
     },
     isPlaying ? delay : null
   )
+
   useEffect(() => {
     console.log('trying checkin user', checkin)
     console.log('hb building?', building)
@@ -70,7 +75,7 @@ export const UserPage = () => {
             {(checkin && building != Building && <b> {building.name}</b>) ||
               ' None'}
           </h2>
-          <h3>You are currently logged in with {user.email}</h3>
+          <h3>You are currently logged in as {user.email}</h3>
 
           {(checkin && building != Building && (
             <IonText>
@@ -80,15 +85,12 @@ export const UserPage = () => {
           )) ||
             ''}
 
-          {checkin == true ? (
-            <Button
-              className={classes.button}
-              disabled
-              onClick={handleCheckout}>
+          {checkin ? (
+            <Button className={classes.button} onClick={handleCheckout}>
               Check Out of Spot
             </Button>
           ) : (
-            <Button className={classes.button} onClick={handleCheckout}>
+            <Button className={classes.button} disabled>
               Check Out of Spot
             </Button>
           )}

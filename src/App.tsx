@@ -35,7 +35,9 @@ import { BuildingContext } from './context/BuildingContext'
 import { CheckinContext } from './context/CheckinContext'
 import { DefaultUser, UserProps } from './components/User'
 import { UserContext } from './context/UserContext'
+
 import { TimeContext, timeProps } from './context/TimeContext'
+import { UseInterval } from './components/Stopwatch'
 const { LocalNotifications } = Plugins
 
 const App: React.FC = () => {
@@ -44,12 +46,19 @@ const App: React.FC = () => {
   const [user, setUser] = useState<UserProps>(DefaultUser)
   const [time, setTime] = useState<number>(0)
 
+  const [isPlaying, setPlaying] = useState<boolean>(false)
+
+  const minuteTime = (time / 60).toFixed(1)
+
+  const delay = 10000
+
   useEffect(() => {
     if (building == Hoover && time > 20) {
       setCheckin(false)
       setTime(0)
-      building.peopleInside -= 1
-      building.seatsAvailable += 1
+      Hoover.peopleInside -= 1
+      Hoover.seatsAvailable += 1
+      setBuilding(Building)
     }
   })
 

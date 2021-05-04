@@ -10,6 +10,10 @@ const JulianButton = styled(Button)({
   marginTop: '7.5rem',
   backgroundColor: ' #ffc72c',
   padding: '6px 16px',
+  '&:hover': {
+    backgroundColor: '#63666a',
+    color: 'white',
+  },
 })
 
 const LillyButton = styled(Button)({
@@ -18,13 +22,21 @@ const LillyButton = styled(Button)({
   marginTop: '3rem',
   backgroundColor: '#63666a',
   color: 'white',
+  '&:hover': {
+    backgroundColor: '#63666a',
+    color: 'white',
+  },
 })
 const HooverButton = styled(Button)({
   position: 'fixed',
   marginLeft: '7rem',
   marginTop: '12rem',
-  backgroundColor: '#63666a',
-  color: 'white',
+  backgroundColor: '#ffc72c',
+  color: 'black',
+  '&:hover': {
+    backgroundColor: '#63666a',
+    color: 'white',
+  },
 })
 const UBButton = styled(Button)({
   position: 'fixed',
@@ -33,6 +45,10 @@ const UBButton = styled(Button)({
   backgroundColor: '#63666a',
   color: 'white',
   width: '4.3rem',
+  '&:hover': {
+    backgroundColor: '#63666a',
+    color: 'white',
+  },
 })
 const HarrisonButton = styled(Button)({
   position: 'fixed',
@@ -40,14 +56,22 @@ const HarrisonButton = styled(Button)({
   marginTop: '16rem',
   backgroundColor: '#63666a',
   color: 'white',
+  '&:hover': {
+    backgroundColor: '#63666a',
+    color: 'white',
+  },
 })
 
 const GCPAButton = styled(Button)({
   position: 'fixed',
   marginLeft: '7rem',
   marginTop: '4rem',
-  backgroundColor: '#63666a',
-  color: 'white',
+  backgroundColor: '#ffc72c',
+  color: 'black',
+  '&:hover': {
+    backgroundColor: '#63666a',
+    color: 'white',
+  },
 })
 
 const PCCMButton = styled(Button)({
@@ -57,6 +81,10 @@ const PCCMButton = styled(Button)({
   backgroundColor: '#63666a',
   color: 'white',
   transform: 'rotate(90deg)',
+  '&:hover': {
+    backgroundColor: '#63666a',
+    color: 'white',
+  },
 })
 
 const EastCoButton = styled(Button)({
@@ -65,15 +93,23 @@ const EastCoButton = styled(Button)({
   marginTop: '20rem',
   backgroundColor: '#63666a',
   color: 'white',
+  '&:hover': {
+    backgroundColor: '#63666a',
+    color: 'white',
+  },
 })
 
 const RoyButton = styled(Button)({
   position: 'fixed',
   marginLeft: '16.5rem',
   marginTop: '20rem',
-  backgroundColor: '#63666a',
-  color: 'white',
+  backgroundColor: '#ffc72c',
+  color: 'black',
   transform: 'rotate(270deg)',
+  '&:hover': {
+    backgroundColor: '#63666a',
+    color: 'white',
+  },
 })
 
 const AsburyButton = styled(Button)({
@@ -82,6 +118,10 @@ const AsburyButton = styled(Button)({
   marginTop: '25.2rem',
   backgroundColor: '#63666a',
   color: 'white',
+  '&:hover': {
+    backgroundColor: '#63666a',
+    color: 'white',
+  },
 })
 
 export {

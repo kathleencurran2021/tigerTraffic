@@ -5,11 +5,6 @@ export interface timeProps {
   setTime: (x: number) => void
 }
 
-// export const OGTime = {
-//   time: 0,
-//   setTime: () => {},
-// }
-
 const TimeContext = createContext<timeProps>({
   time: 0,
   setTime: () => {},

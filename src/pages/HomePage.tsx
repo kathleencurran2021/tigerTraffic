@@ -63,9 +63,10 @@ export const HomePage: React.FC = () => {
   const handleCheckout = () => {
     setCheckin(false)
     setTime(0)
-    setBuilding(Building)
+    console.log('CHECKING STUFF', building)
     building.peopleInside -= 1
     building.seatsAvailable += 1
+    setBuilding(Building)
   }
 
   return (

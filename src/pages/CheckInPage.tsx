@@ -66,20 +66,11 @@ export const CheckInPage = () => {
 
   const handleCheckin = (Building: BuildingProps) => {
     setCheckin(true)
-    console.log()
     setBuilding(Building)
+    console.log(building)
     building.peopleInside += 1
     building.seatsAvailable -= 1
-    setPlaying(!isPlaying)
-  }
-
-  const handleCheckout = () => {
-    setCheckin(false)
-    setBuilding(Building)
-    building.peopleInside -= 1
-    building.seatsAvailable += 1
-    setPlaying(false)
-    setTime(0)
+    setPlaying(isPlaying)
   }
 
   UseInterval(

@@ -9,6 +9,7 @@ import { AccordionSummary } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
 import React, { useContext, useEffect, useState } from 'react'
 import { Navbar } from '../components/Navbar'
+// import { BigNotif } from '../components/Notifications'
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import {

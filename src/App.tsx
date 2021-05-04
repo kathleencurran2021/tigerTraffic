@@ -23,6 +23,8 @@ import '@ionic/react/css/text-alignment.css'
 import '@ionic/react/css/text-transformation.css'
 import '@ionic/react/css/flex-utils.css'
 import '@ionic/react/css/display.css'
+import { Plugins, LocalNotification } from '@capacitor/core'
+import { render } from 'react-dom'
 
 /* Theme variables */
 import './theme/variables.css'
@@ -34,6 +36,7 @@ import { CheckinContext } from './context/CheckinContext'
 import { DefaultUser, UserProps } from './components/User'
 import { UserContext } from './context/UserContext'
 import { TimeContext, timeProps } from './context/TimeContext'
+const { LocalNotifications } = Plugins
 
 const App: React.FC = () => {
   const [building, setBuilding] = useState<BuildingProps>(Building)

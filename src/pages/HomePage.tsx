@@ -1,5 +1,5 @@
 import { IonContent, IonPage, IonText } from '@ionic/react'
-import { Button, makeStyles } from '@material-ui/core'
+import { Box, Button, makeStyles } from '@material-ui/core'
 import React, { useContext, useEffect, useState } from 'react'
 import { Navbar } from '../components/Navbar'
 import { Link as RouterLink } from 'react-router-dom'

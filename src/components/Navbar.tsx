@@ -18,12 +18,12 @@ const Navbar = () => {
 
   return (
     <BottomNav value={value} onChange={handleChange} showLabels>
-      {/* <BottomNavAction icon={<HomeIcon />} value="/homepage"></BottomNavAction>
+      <BottomNavAction icon={<HomeIcon />} value="/homepage"></BottomNavAction>
       <BottomNavAction icon={<MapIcon />} value="/map"></BottomNavAction>
-      <BottomNavAction icon={<PersonIcon />} value="/user"></BottomNavAction> */}
-      <BottomNavAction label="Home" value="/homepage"></BottomNavAction>
+      <BottomNavAction icon={<PersonIcon />} value="/user"></BottomNavAction>
+      {/* <BottomNavAction label="Home" value="/homepage"></BottomNavAction>
       <BottomNavAction label="Map" value="/map"></BottomNavAction>
-      <BottomNavAction label="User" value="/user"></BottomNavAction>
+      <BottomNavAction label="User" value="/user"></BottomNavAction> */}
     </BottomNav>
   )
 }

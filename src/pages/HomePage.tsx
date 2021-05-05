@@ -9,6 +9,7 @@ import { Building } from '../components/Building'
 import { UserContext } from '../context/UserContext'
 import { TimeContext } from '../context/TimeContext'
 import { UseInterval } from '../components/Stopwatch'
+import { Database, Storage } from '@ionic/storage'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,18 +38,21 @@ export const HomePage: React.FC = () => {
   const classes = useStyles()
   const { checkin, setCheckin } = useContext(CheckinContext)
   const { building, setBuilding } = useContext(BuildingContext)
-  const { user, setUser } = useContext(UserContext)
+
   const { time, setTime } = useContext(TimeContext)
   const [isPlaying, setPlaying] = useState<boolean>(false)
   const delay = 1000
+  const { user, setUser } = useContext(UserContext)
+  // const [db, setDB] = useState<Database | null>(null)
 
   useEffect(() => {
     console.log('checkin home', checkin)
     console.log('trying building home', building)
-    // console.log('and the user is', user)
+    console.log('and the user is', user)
   }, [checkin, building])
 
   useEffect(() => {
+    // runSet()
     checkin ? setPlaying(!isPlaying) : setPlaying(false)
     console.log('playing?', isPlaying)
   }, [])

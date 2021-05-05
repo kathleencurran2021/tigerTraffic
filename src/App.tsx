@@ -6,6 +6,7 @@ import { HomePage } from './pages/HomePage'
 import { MapPage } from './pages/MapPage'
 import { UserPage } from './pages/UserPage'
 import { CheckInPage } from './pages/CheckInPage'
+import { Database, Storage } from '@ionic/storage'
 import PrivateRoute from './components/PrivateRoute'
 // import { UserContext, UserProvider } from './components/AuthContext'
 /* Core CSS required for Ionic components to work properly */
@@ -38,6 +39,7 @@ import { UserContext } from './context/UserContext'
 
 import { TimeContext, timeProps } from './context/TimeContext'
 import { UseInterval } from './components/Stopwatch'
+import { Button } from '@material-ui/core'
 const { LocalNotifications } = Plugins
 
 const App: React.FC = () => {
@@ -45,15 +47,38 @@ const App: React.FC = () => {
   const [checkin, setCheckin] = useState<boolean>(false)
   const [user, setUser] = useState<UserProps>(DefaultUser)
   const [time, setTime] = useState<number>(0)
-
   const [isPlaying, setPlaying] = useState<boolean>(false)
-
   const minuteTime = (time / 60).toFixed(1)
+
+  const [db, setDB] = useState<Database | null>(null)
 
   const delay = 10000
 
+  // useEffect(() => {
+  //   async function initDB() {
+  //     const store = new Storage()
+  //     const db = await store.create()
+
+  //     setDB(db)
+  //   }
+  //   initDB()
+  // }, [])
+
+  // const runSet = () => {
+  //   db.set('user', user.email)
+  // }
+
+  // const runGet = async () => {
+  //   const val = await db.get('name')
+  //   console.log('the val', val)
+  // }
+
+  // useEffect(() => {
+  //   runSet()
+  // })
+
   useEffect(() => {
-    if (building == Hoover && time > 20) {
+    if (building == Hoover && time > 5) {
       setCheckin(false)
       setTime(0)
       Hoover.peopleInside -= 1

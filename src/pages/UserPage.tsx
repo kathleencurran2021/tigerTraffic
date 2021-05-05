@@ -6,9 +6,15 @@ import { Navbar } from '../components/Navbar'
 import { BuildingContext } from '../context/BuildingContext'
 import { CheckinContext } from '../context/CheckinContext'
 import { UserContext } from '../context/UserContext'
-import { useStopwatch } from 'react-timer-hook'
+import { Link as RouterLink } from 'react-router-dom'
+
 import { TimeContext } from '../context/TimeContext'
 import { UseInterval } from '../components/Stopwatch'
+import { Database } from '@ionic/storage'
+
+import { Plugins } from '@capacitor/core'
+
+const { Storage } = Plugins
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -35,6 +41,7 @@ export const UserPage = () => {
   const { time, setTime } = useContext(TimeContext)
   const classes = useStyles()
   const [isPlaying, setPlaying] = useState<boolean>(false)
+  const [db, setDB] = useState<Database | null>(null)
 
   const minuteTime = (time / 60).toFixed(1)
 
@@ -47,9 +54,28 @@ export const UserPage = () => {
     setTime(0)
   }
 
+  async function getObject() {
+    const ret: any = await Storage.get({ key: 'user' })
+    const use = ret.value
+    setUser({ email: use, isCheckedIn: false })
+  }
+
+  async function clear() {
+    await Storage.clear()
+  }
+
+  useEffect(() => {
+    getObject()
+  }, [])
+
+  function handleLogout() {
+    clear()
+  }
+
   useEffect(() => {
     checkin ? setPlaying(!isPlaying) : setPlaying(false)
     console.log('playing?', isPlaying)
+    // console.log('b', db)
   }, [])
 
   UseInterval(
@@ -75,6 +101,7 @@ export const UserPage = () => {
             {(checkin && building != Building && <b> {building.name}</b>) ||
               ' None'}
           </h2>
+          {/* <Button onClick={getObject}>YEs</Button> */}
           <h3>You are currently logged in as {user.email}</h3>
 
           {(checkin && building != Building && (
@@ -95,6 +122,15 @@ export const UserPage = () => {
             </Button>
           )}
         </div>
+
+        <Button
+          variant="contained"
+          color="primary"
+          component={RouterLink}
+          to={'/welcome'}
+          onClick={handleLogout}>
+          Log Out
+        </Button>
       </IonContent>
       <Navbar></Navbar>
     </IonPage>

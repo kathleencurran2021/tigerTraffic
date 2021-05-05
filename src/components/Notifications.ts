@@ -6,11 +6,11 @@ class Notifications {
     try {
       // Request/ check permissions
       if (!(await LocalNotifications.requestPermission()).granted) {
-        console.log('it was granted')
+        console.log('it was not granted')
         return
       }
+      console.log('permission granted')
 
-      // Clear old notifications in prep for refresh (OPTIONAL)
       const pending = await LocalNotifications.getPending()
       if (pending.notifications.length > 0)
         await LocalNotifications.cancel(pending)
@@ -20,11 +20,11 @@ class Notifications {
         notifications: [
           {
             title: 'Tiger Traffic',
-            body: 'youve been here a minute',
+            body: 'You have been checked out of Hoover',
             id: 1,
             schedule: {
               at: new Date(new Date().getTime() + 1000),
-              repeats: true,
+              // repeats: true,
             },
           },
         ],

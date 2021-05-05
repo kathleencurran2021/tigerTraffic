@@ -51,33 +51,6 @@ const App: React.FC = () => {
   const [isPlaying, setPlaying] = useState<boolean>(false)
   const minuteTime = (time / 60).toFixed(1)
 
-  const [db, setDB] = useState<Database | null>(null)
-
-  const delay = 10000
-
-  // useEffect(() => {
-  //   async function initDB() {
-  //     const store = new Storage()
-  //     const db = await store.create()
-
-  //     setDB(db)
-  //   }
-  //   initDB()
-  // }, [])
-
-  // const runSet = () => {
-  //   db.set('user', user.email)
-  // }
-
-  // const runGet = async () => {
-  //   const val = await db.get('name')
-  //   console.log('the val', val)
-  // }
-
-  // useEffect(() => {
-  //   runSet()
-  // })
-
   useEffect(() => {
     if (building == Hoover && time > 5) {
       setCheckin(false)

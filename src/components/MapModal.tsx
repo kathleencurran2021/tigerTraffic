@@ -59,10 +59,6 @@ export const MapModal: React.FC<ModalProps> = ({
     handleClose()
   }
 
-  // const handleView = () => {
-  //   setBuilding(Building)
-  // }
-
   return (
     <Dialog open={isOpen} onClose={handleClose} className={classes.modal}>
       <DialogContent>
@@ -94,7 +90,6 @@ export const MapModal: React.FC<ModalProps> = ({
               className={classes.button}
               variant="contained"
               color="primary"
-              // onClick={handleModalClick}
               disabled>
               Check In
             </Button>
@@ -103,9 +98,7 @@ export const MapModal: React.FC<ModalProps> = ({
             className={classes.button}
             variant="contained"
             component={RouterLink}
-            to={'/checkin'}
-            // onClick={handleView}
-          >
+            to={'/checkin'}>
             View More
           </Button>
         </DialogActions>

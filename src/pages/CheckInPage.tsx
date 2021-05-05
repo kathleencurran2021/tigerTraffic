@@ -1,4 +1,3 @@
-import { IonButton, IonContent } from '@ionic/react'
 import {
   Accordion,
   AccordionDetails,
@@ -9,25 +8,14 @@ import { AccordionSummary } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
 import React, { useContext, useEffect, useState } from 'react'
 import { Navbar } from '../components/Navbar'
-// import { BigNotif } from '../components/Notifications'
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import {
-  BuildingProps,
-  Building,
-  Hoover,
-  Julian,
-  buildingArray,
-} from './../components/Building'
+import { BuildingProps, buildingArray } from './../components/Building'
 import { CheckinPageContent } from '../styles/CheckinPageStyles'
 import { CheckinContext } from '../context/CheckinContext'
 import { BuildingContext } from '../context/BuildingContext'
 import { TimeContext } from '../context/TimeContext'
 import { UseInterval } from '../components/Stopwatch'
-
-interface CheckinProps {
-  Building: BuildingProps
-}
 
 const useStyles = makeStyles(() => ({
   root: {

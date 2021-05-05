@@ -1,6 +1,4 @@
 import {
-  Accordion,
-  AccordionSummary,
   BottomNavigation,
   BottomNavigationAction,
   styled,
@@ -17,9 +15,6 @@ const BottomNav = styled(BottomNavigation)({
 })
 
 const BottomNavAction = styled(BottomNavigationAction)({
-  // '&:hover': {
-  //   backgroundColor: 'gray',
-  // },
   color: 'black',
   '& span': {
     fontSize: '1.7rem',
@@ -31,68 +26,4 @@ const BottomNavAction = styled(BottomNavigationAction)({
   },
 })
 
-// const CheckinAccord = styled(Accordion)({
-//   padding: '2px 12px 2px 12px',
-//   display: 'block',
-//   '& .first-accordion-summary': {
-//     display: 'block',
-//     textAlign: 'center',
-//     '& .MuiAccordionSummary-expandIcon': {
-//       backgroundColor: '',
-//       textAlign: 'right',
-//       '& .MuiIconButton-label': {
-//         textAlign: 'end',
-//         float: 'right',
-//       },
-//       // '&::after': {
-//       //   color: 'blue',
-//       // },
-//     },
-//   },
-//   '& .first-acc-details': {
-//     backgroundColor: '',
-//   },
-// '&  .MuiAccordionSummary-root': {
-//   display: 'block',
-//   textAlign: 'center',
-//   '& .MuiAccordionSummary-expandIcon': {
-//     '&::after': {
-//       color: 'blue',
-//     },
-//   },
-// },
-// })
-
-// const AccordionSum = styled(AccordionSummary)({
-//   display: 'block',
-//   '& .MuiAccordionSummary-content': {
-//     marginTop: '1rem',
-//     marginBottom: 0,
-//     display: 'block',
-//   },
-//   '& p': {
-//     width: '100%',
-//   },
-// '& .MuiAccordionSummary-expandIcon': {
-//   color: 'red',
-//   padding: '2px 0px 8px 0px',
-//   textAlign: 'right',
-//   marginLeft: '90%',
-// },
-// })
-
-// const CheckInPageContent = styled('div')({
-//   fontFamily: 'serif',
-
-//   '& .title': {
-//     textAlign: 'center',
-//   },
-// })
-
-export {
-  BottomNav,
-  // CheckInPageContent,
-  BottomNavAction,
-  // AccordionSum,
-  // CheckinAccord,
-}
+export { BottomNav, BottomNavAction }

@@ -9,7 +9,6 @@ import { Building } from '../components/Building'
 import { UserContext } from '../context/UserContext'
 import { TimeContext } from '../context/TimeContext'
 import { UseInterval } from '../components/Stopwatch'
-import { Database, Storage } from '@ionic/storage'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     verticalAlign: 'middle',
     alignItems: 'center',
     marginTop: '2rem',
-    // display: 'flex',
+    display: 'flex',
   },
   inButton: {
     width: '17rem',
@@ -43,7 +42,6 @@ export const HomePage: React.FC = () => {
   const [isPlaying, setPlaying] = useState<boolean>(false)
   const delay = 1000
   const { user, setUser } = useContext(UserContext)
-  // const [db, setDB] = useState<Database | null>(null)
 
   useEffect(() => {
     console.log('checkin home', checkin)
@@ -52,7 +50,6 @@ export const HomePage: React.FC = () => {
   }, [checkin, building])
 
   useEffect(() => {
-    // runSet()
     checkin ? setPlaying(!isPlaying) : setPlaying(false)
     console.log('playing?', isPlaying)
   }, [])

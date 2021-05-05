@@ -5,7 +5,6 @@ export interface BuildingProps {
   peopleInside: number
   capacity: number
   seatsAvailable: number
-  // studySpaces: number
   studySpots: string[]
 }
 
@@ -14,7 +13,6 @@ const Building: BuildingProps = {
   peopleInside: 0,
   capacity: 0,
   seatsAvailable: 0,
-  // studySpaces: 0,
   studySpots: [],
 }
 
@@ -28,7 +26,6 @@ let Julian: BuildingProps = {
   peopleInside: 79,
   capacity: 80,
   seatsAvailable: 1,
-  // studySpaces: 4,
   studySpots: ['Prevo', 'First Floor', 'Second Floor'],
 }
 
@@ -37,7 +34,6 @@ let Hoover: BuildingProps = {
   peopleInside: 100,
   capacity: 230,
   seatsAvailable: 130,
-  // studySpaces: 0,
   studySpots: [],
 }
 

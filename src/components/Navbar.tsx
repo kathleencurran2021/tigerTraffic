@@ -1,5 +1,3 @@
-import { IonButton, IonLabel, IonList, IonNav, IonToolbar } from '@ionic/react'
-import { BottomNavigationAction } from '@material-ui/core'
 import HomeIcon from '@material-ui/icons/Home'
 import MapIcon from '@material-ui/icons/Map'
 import PersonIcon from '@material-ui/icons/Person'

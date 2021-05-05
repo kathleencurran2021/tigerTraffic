@@ -16,7 +16,6 @@ import {
   AsburyButton,
 } from '../styles/BuildingStyling'
 import {
-  Building,
   BuildingProps,
   Hoover,
   Julian,
@@ -74,7 +73,6 @@ export const MapPage = () => {
 
   const handleClose = () => {
     setOpen(false)
-    // setBuilding(Building)
   }
 
   return (

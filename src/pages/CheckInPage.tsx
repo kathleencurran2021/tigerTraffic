@@ -65,11 +65,12 @@ export const CheckInPage = () => {
   }
 
   const handleCheckin = (Building: BuildingProps) => {
+    console.log('What building are we checking into?', Building)
     setCheckin(true)
     setBuilding(Building)
     console.log(building)
-    building.peopleInside += 1
-    building.seatsAvailable -= 1
+    Building.peopleInside += 1
+    Building.seatsAvailable -= 1
     setPlaying(isPlaying)
   }
 
@@ -79,6 +80,10 @@ export const CheckInPage = () => {
     },
     isPlaying ? delay : null
   )
+
+  useEffect(() => {
+    console.log('seats available', building.seatsAvailable)
+  }, [building.seatsAvailable])
 
   useEffect(() => {
     console.log('trying checkin checkinpage', checkin)
@@ -117,12 +122,13 @@ export const CheckInPage = () => {
             )}
 
             {checkin == true || build.peopleInside == build.capacity ? (
-              <Button className={classes.button} disabled>
+              <Button className={classes.button} variant="contained" disabled>
                 Check In
               </Button>
             ) : (
               <Button
                 className={classes.button}
+                variant="contained"
                 onClick={() => handleCheckin(build)}>
                 Check In
               </Button>

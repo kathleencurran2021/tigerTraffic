@@ -30,6 +30,10 @@ const useStyles = makeStyles(() => ({
       backgroundColor: '#63666a',
       color: 'white',
     },
+    '&::after': {
+      backgroundColor: '#63666a',
+      color: 'white',
+    },
   },
 }))
 
@@ -113,11 +117,14 @@ export const UserPage = () => {
             ''}
 
           {checkin ? (
-            <Button className={classes.button} onClick={handleCheckout}>
+            <Button
+              className={classes.button}
+              variant="contained"
+              onClick={handleCheckout}>
               Check Out of Spot
             </Button>
           ) : (
-            <Button className={classes.button} disabled>
+            <Button className={classes.button} variant="contained" disabled>
               Check Out of Spot
             </Button>
           )}

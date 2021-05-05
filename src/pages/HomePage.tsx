@@ -9,6 +9,7 @@ import { Building } from '../components/Building'
 import { UserContext } from '../context/UserContext'
 import { TimeContext } from '../context/TimeContext'
 import { UseInterval } from '../components/Stopwatch'
+import notifications from '../components/Notifications'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
     verticalAlign: 'middle',
     alignItems: 'center',
     marginTop: '2rem',
-    display: 'flex',
   },
   inButton: {
     width: '17rem',
@@ -76,6 +76,7 @@ export const HomePage: React.FC = () => {
         <IonText>
           <h1>HomePage</h1>
         </IonText>
+        <Button onClick={() => notifications.schedule(0, 0.1)}>PUSH</Button>
         {(checkin && building != Building && (
           <IonText>You are checked in to {building.name}</IonText>
         )) || <IonText>You are not checked in anywhere</IonText>}

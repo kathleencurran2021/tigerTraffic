@@ -40,6 +40,7 @@ import { UserContext } from './context/UserContext'
 import { TimeContext, timeProps } from './context/TimeContext'
 import { UseInterval } from './components/Stopwatch'
 import { Button } from '@material-ui/core'
+import notifications from '../../tigerTraffic/src/components/Notifications'
 const { LocalNotifications } = Plugins
 
 const App: React.FC = () => {
@@ -84,6 +85,7 @@ const App: React.FC = () => {
       Hoover.peopleInside -= 1
       Hoover.seatsAvailable += 1
       setBuilding(Building)
+      notifications.schedule(0, 0.1)
     }
   })
 

@@ -61,12 +61,14 @@ const App: React.FC = () => {
     }
     // checks a user out after 2 hours
     if (time == 7200) {
-      setCheckin(false)
-      building.peopleInside -= 1
-      building.seatsAvailable += 1
-      setBuilding(Building)
-      setPlaying(false)
-      setTime(0)
+      notifications.schedule(building)
+
+      // setCheckin(false)
+      // building.peopleInside -= 1
+      // building.seatsAvailable += 1
+      // setBuilding(Building)
+      // setPlaying(false)
+      // setTime(0)
     }
     // if (time > 20) {
     //   notifications.schedule(building)

@@ -1,4 +1,5 @@
 # Tiger Traffic Guide
+Tiger Traffic is a cross-platform mobile application built as a Senior Capstone Project at DePauw University.
 
 ## To View In Browser
 

@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "@capacitor/android": "^2.4.6",
+    "@capacitor/android": "^2.4.7",
     "@capacitor/core": "2.4.6",
     "@capacitor/ios": "^2.4.6",
     "@ionic-native/local-notifications": "^5.32.1",
@@ -26,6 +26,7 @@
     "cordova-plugin-local-notification": "^0.9.0-beta.2",
     "i": "^0.3.6",
     "ionicons": "^5.4.0",
+    "jetifier": "^2.0.0",
     "npm": "^7.11.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",

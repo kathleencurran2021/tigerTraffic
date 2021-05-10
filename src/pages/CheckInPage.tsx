@@ -21,6 +21,8 @@ const useStyles = makeStyles(() => ({
   root: {
     textAlign: 'center',
     width: '100%',
+    height: '100%',
+    overflow: 'auto',
   },
   boxRules: {
     height: 476,
@@ -59,7 +61,8 @@ export const CheckInPage = () => {
     console.log(building)
     Building.peopleInside += 1
     Building.seatsAvailable -= 1
-    setPlaying(isPlaying)
+    // setPlaying(isPlaying)
+    setPlaying(true)
   }
 
   UseInterval(
@@ -79,8 +82,9 @@ export const CheckInPage = () => {
   }, [checkin, building])
 
   return (
-    <CheckinPageContent>
+    <CheckinPageContent className="big-div">
       <h1 className={classes.root}>Check In </h1>
+
       {/* maps each building and creates an accordion for each  */}
       {buildingArray.map((build, index) => (
         <Accordion

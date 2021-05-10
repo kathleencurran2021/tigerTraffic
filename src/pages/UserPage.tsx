@@ -35,6 +35,14 @@ const useStyles = makeStyles(() => ({
       color: 'white',
     },
   },
+  logout: {
+    marginTop: '14rem',
+    fontSize: '1rem',
+    backgroundColor: '#63666a',
+    color: 'white',
+    height: '3rem',
+    width: '8rem',
+  },
 }))
 
 export const UserPage = () => {
@@ -131,6 +139,7 @@ export const UserPage = () => {
         </div>
 
         <Button
+          className={classes.logout}
           variant="contained"
           color="primary"
           component={RouterLink}

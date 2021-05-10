@@ -64,7 +64,9 @@ export const SplashPage = () => {
             fullWidth={true}
             value={textVal}
             onChange={(e) => setTextVal(e.target.value)}></TextField>
-          <GoButton onClick={() => handleLogin()}>Go</GoButton>
+          <GoButton type="submit" onClick={() => handleLogin()}>
+            Go
+          </GoButton>
         </form>
       </IonContent>
     </IonPage>

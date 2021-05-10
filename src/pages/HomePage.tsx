@@ -63,11 +63,12 @@ export const HomePage: React.FC = () => {
 
   const handleCheckout = () => {
     setCheckin(false)
-    setTime(0)
+    setBuilding(Building)
     console.log('CHECKING STUFF', building)
     building.peopleInside -= 1
     building.seatsAvailable += 1
-    setBuilding(Building)
+    setPlaying(false)
+    setTime(0)
   }
 
   return (
@@ -76,7 +77,7 @@ export const HomePage: React.FC = () => {
         <IonText>
           <h1>HomePage</h1>
         </IonText>
-        <Button onClick={() => notifications.schedule(0, 0.1)}>PUSH</Button>
+        {/* <Button onClick={() => notifications.schedule()}>PUSH</Button> */}
         {(checkin && building != Building && (
           <IonText>You are checked in to {building.name}</IonText>
         )) || <IonText>You are not checked in anywhere</IonText>}

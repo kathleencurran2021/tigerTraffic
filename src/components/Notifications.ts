@@ -1,8 +1,10 @@
 import { Plugins, LocalNotification } from '@capacitor/core'
+
+import { BuildingProps } from './Building'
 const { LocalNotifications } = Plugins
 
 class Notifications {
-  public async schedule(hour: number, minute: number) {
+  public async schedule(someBuilding?: BuildingProps) {
     try {
       // Request/ check permissions
       if (!(await LocalNotifications.requestPermission()).granted) {
@@ -16,17 +18,55 @@ class Notifications {
         await LocalNotifications.cancel(pending)
 
       console.log('something happened')
+
+      const registerActions = async () => {
+        try {
+          await LocalNotifications.registerActionTypes({
+            types: [
+              {
+                id: 'BEEN_AWAY',
+                actions: [
+                  {
+                    id: 'checkout',
+                    title: 'Okay',
+                  },
+                  {
+                    id: 'dismiss',
+                    title: 'Dismiss',
+                    destructive: true,
+                  },
+                ],
+              },
+            ],
+          })
+        } catch (e) {
+          console.error(e)
+          /* throw e; */
+        }
+      }
+
       await LocalNotifications.schedule({
         notifications: [
           {
             title: 'Tiger Traffic',
             body: 'You have been checked out of Hoover',
             id: 1,
+            actionTypeId: 'BEEN_AWAY',
             schedule: {
               at: new Date(new Date().getTime() + 1000),
               // repeats: true,
             },
           },
+          // {
+          //   title: 'Tiger Traffic',
+          //   body: 'Are you still in ' + someBuilding + '?',
+          //   id: 2,
+          //   actionTypeId: 'been-away',
+          //   schedule: {
+          //     at: new Date(new Date().getTime() + 1000),
+          //     // repeats: true,
+          //   },
+          // },
         ],
       })
     } catch (error) {

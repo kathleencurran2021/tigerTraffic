@@ -25,7 +25,6 @@ import '@ionic/react/css/text-transformation.css'
 import '@ionic/react/css/flex-utils.css'
 import '@ionic/react/css/display.css'
 import { Plugins, LocalNotification } from '@capacitor/core'
-import { render } from 'react-dom'
 
 /* Theme variables */
 import './theme/variables.css'
@@ -38,8 +37,7 @@ import { DefaultUser, UserProps } from './components/User'
 import { UserContext } from './context/UserContext'
 
 import { TimeContext, timeProps } from './context/TimeContext'
-import { UseInterval } from './components/Stopwatch'
-import { Button } from '@material-ui/core'
+
 import notifications from '../../tigerTraffic/src/components/Notifications'
 const { LocalNotifications } = Plugins
 
@@ -54,13 +52,30 @@ const App: React.FC = () => {
   useEffect(() => {
     if (building == Hoover && time > 5) {
       setCheckin(false)
-      setTime(0)
       Hoover.peopleInside -= 1
       Hoover.seatsAvailable += 1
       setBuilding(Building)
-      notifications.schedule(0, 0.1)
+      notifications.schedule()
+      setPlaying(false)
+      setTime(0)
     }
+    // checks a user out after 2 hours
+    if (time == 7200) {
+      setCheckin(false)
+      building.peopleInside -= 1
+      building.seatsAvailable += 1
+      setBuilding(Building)
+      setPlaying(false)
+      setTime(0)
+    }
+    // if (time > 20) {
+    //   notifications.schedule(building)
+    // }
   })
+
+  useEffect(() => {
+    console.log(time)
+  }, [time])
 
   return (
     <IonApp>

@@ -5,7 +5,7 @@ import { Navbar } from '../components/Navbar'
 import { Link as RouterLink } from 'react-router-dom'
 import { CheckinContext } from '../context/CheckinContext'
 import { BuildingContext } from '../context/BuildingContext'
-import { Building } from '../components/Building'
+import { Building, Hoover } from '../components/Building'
 import { UserContext } from '../context/UserContext'
 import { TimeContext } from '../context/TimeContext'
 import { UseInterval } from '../components/Stopwatch'
@@ -37,11 +37,10 @@ export const HomePage: React.FC = () => {
   const classes = useStyles()
   const { checkin, setCheckin } = useContext(CheckinContext)
   const { building, setBuilding } = useContext(BuildingContext)
-
   const { time, setTime } = useContext(TimeContext)
+  const { user, setUser } = useContext(UserContext)
   const [isPlaying, setPlaying] = useState<boolean>(false)
   const delay = 1000
-  const { user, setUser } = useContext(UserContext)
 
   useEffect(() => {
     console.log('checkin home', checkin)
@@ -49,17 +48,17 @@ export const HomePage: React.FC = () => {
     console.log('and the user is', user)
   }, [checkin, building])
 
-  useEffect(() => {
-    checkin ? setPlaying(!isPlaying) : setPlaying(false)
-    console.log('playing?', isPlaying)
-  }, [])
-
   UseInterval(
     () => {
       setTime(time + 1)
     },
     isPlaying ? delay : null
   )
+
+  useEffect(() => {
+    checkin ? setPlaying(!isPlaying) : setPlaying(false)
+    console.log('playing?', isPlaying)
+  }, [])
 
   const handleCheckout = () => {
     setCheckin(false)
@@ -70,6 +69,12 @@ export const HomePage: React.FC = () => {
     setPlaying(false)
     setTime(0)
   }
+
+  useEffect(() => {
+    if (building == Hoover && time == 5) {
+      setPlaying(false)
+    }
+  })
 
   return (
     <IonPage className={classes.root}>

@@ -10,7 +10,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Navbar } from '../components/Navbar'
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import { BuildingProps, buildingArray } from './../components/Building'
+import { BuildingProps, buildingArray, Hoover } from './../components/Building'
 import { CheckinPageContent } from '../styles/CheckinPageStyles'
 import { CheckinContext } from '../context/CheckinContext'
 import { BuildingContext } from '../context/BuildingContext'
@@ -80,6 +80,12 @@ export const CheckInPage = () => {
     console.log('trying checkin checkinpage', checkin)
     console.log('hb building CHECKIN?', building)
   }, [checkin, building])
+
+  useEffect(() => {
+    if (building == Hoover && time == 5) {
+      setPlaying(false)
+    }
+  })
 
   return (
     <CheckinPageContent className="big-div">

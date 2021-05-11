@@ -39,6 +39,7 @@ import { UserContext } from './context/UserContext'
 import { TimeContext, timeProps } from './context/TimeContext'
 
 import notifications from '../../tigerTraffic/src/components/Notifications'
+import { UseInterval } from './components/Stopwatch'
 const { LocalNotifications } = Plugins
 
 const App: React.FC = () => {
@@ -48,9 +49,10 @@ const App: React.FC = () => {
   const [time, setTime] = useState<number>(0)
   const [isPlaying, setPlaying] = useState<boolean>(false)
   const minuteTime = (time / 60).toFixed(1)
+  const delay = 1000
 
   useEffect(() => {
-    if (building == Hoover && time > 5) {
+    if (building == Hoover && time == 5) {
       setCheckin(false)
       Hoover.peopleInside -= 1
       Hoover.seatsAvailable += 1
@@ -59,24 +61,14 @@ const App: React.FC = () => {
       setPlaying(false)
       setTime(0)
     }
-    // checks a user out after 2 hours
-    if (time == 7200) {
+    if (time == 10) {
       notifications.scheduleSecond(building)
-
-      // setCheckin(false)
-      // building.peopleInside -= 1
-      // building.seatsAvailable += 1
-      // setBuilding(Building)
-      // setPlaying(false)
-      // setTime(0)
     }
-    // if (time > 20) {
-    //   notifications.schedule(building)
-    // }
   })
 
   useEffect(() => {
     console.log(time)
+    // console.log(isPlaying)
   }, [time])
 
   return (

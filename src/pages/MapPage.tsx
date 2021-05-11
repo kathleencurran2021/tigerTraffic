@@ -52,17 +52,17 @@ export const MapPage = () => {
     console.log('trying mapPage', building)
   }, [building])
 
-  useEffect(() => {
-    checkin ? setPlaying(!isPlaying) : setPlaying(false)
-    console.log('playing?', isPlaying)
-  }, [])
+  // useEffect(() => {
+  //   checkin ? setPlaying(!isPlaying) : setPlaying(false)
+  //   console.log('playing?', isPlaying)
+  // }, [])
 
-  UseInterval(
-    () => {
-      setTime(time + 1)
-    },
-    isPlaying ? delay : null
-  )
+  // UseInterval(
+  //   () => {
+  //     setTime(time + 1)
+  //   },
+  //   isPlaying ? delay : null
+  // )
 
   const handleOpen = (someBuilding: BuildingProps) => {
     setOpen(true)
@@ -74,6 +74,12 @@ export const MapPage = () => {
   const handleClose = () => {
     setOpen(false)
   }
+
+  useEffect(() => {
+    if (building == Hoover && time == 5) {
+      setPlaying(false)
+    }
+  })
 
   return (
     <IonPage>

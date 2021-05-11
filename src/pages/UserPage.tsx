@@ -1,7 +1,7 @@
 import { IonContent, IonPage, IonText } from '@ionic/react'
 import { Button, makeStyles } from '@material-ui/core'
 import React, { useContext, useEffect, useState } from 'react'
-import { Building } from '../components/Building'
+import { Building, Hoover } from '../components/Building'
 import { Navbar } from '../components/Navbar'
 import { BuildingContext } from '../context/BuildingContext'
 import { CheckinContext } from '../context/CheckinContext'
@@ -84,18 +84,23 @@ export const UserPage = () => {
     clear()
   }
 
-  useEffect(() => {
-    checkin ? setPlaying(!isPlaying) : setPlaying(false)
-    console.log('playing?', isPlaying)
-    // console.log('b', db)
-  }, [])
-
   UseInterval(
     () => {
       setTime(time + 1)
     },
     isPlaying ? delay : null
   )
+
+  useEffect(() => {
+    checkin ? setPlaying(!isPlaying) : setPlaying(false)
+    // console.log('playing?', isPlaying)
+  }, [])
+
+  useEffect(() => {
+    if (building == Hoover && time == 5) {
+      setPlaying(false)
+    }
+  })
 
   useEffect(() => {
     console.log('trying checkin user', checkin)

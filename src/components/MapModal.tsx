@@ -6,13 +6,15 @@ import {
   makeStyles,
   Typography,
 } from '@material-ui/core'
-import React, { ReactElement, useContext, useEffect } from 'react'
+import React, { ReactElement, useContext, useEffect, useState } from 'react'
 
 import PropTypes from 'prop-types'
 import { Link as RouterLink } from 'react-router-dom'
-import { BuildingProps } from './Building'
+import { BuildingProps, Hoover } from './Building'
 import { CheckinContext } from '../context/CheckinContext'
 import { BuildingContext } from '../context/BuildingContext'
+import { TimeContext } from '../context/TimeContext'
+import { UseInterval } from './Stopwatch'
 
 const useStyles = makeStyles({
   modal: {},
@@ -43,6 +45,9 @@ export const MapModal: React.FC<ModalProps> = ({
   const classes = useStyles()
   const { checkin, setCheckin } = useContext(CheckinContext)
   const { building, setBuilding } = useContext(BuildingContext)
+  const { time, setTime } = useContext(TimeContext)
+  const [isPlaying, setPlaying] = useState<boolean>(false)
+  const delay = 1000
 
   useEffect(() => {
     console.log('Checkin Context Modal:', checkin)
@@ -53,11 +58,30 @@ export const MapModal: React.FC<ModalProps> = ({
     console.log('checked in?' + checkin)
     setCheckin(true)
     setBuilding(building)
+    setPlaying(true)
     console.log('inside click', building)
     building.peopleInside += 1
     building.seatsAvailable -= 1
     handleClose()
   }
+
+  UseInterval(
+    () => {
+      setTime(time + 1)
+    },
+    isPlaying ? delay : null
+  )
+
+  useEffect(() => {
+    checkin ? setPlaying(!isPlaying) : setPlaying(false)
+    // console.log('playing?', isPlaying)
+  }, [])
+
+  useEffect(() => {
+    if (building == Hoover && time == 5) {
+      setPlaying(false)
+    }
+  })
 
   return (
     <Dialog open={isOpen} onClose={handleClose} className={classes.modal}>

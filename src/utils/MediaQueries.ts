@@ -10,6 +10,8 @@ const height = {
   mobileSTenHeight: '760px',
 }
 
+const tryin = '@media (width: 360px) and (height: 812)'
+
 export const device = {
   mobileDefault: `(min-width: ${width.mobileDefault}) and (min-height: ${height.mobileDefaultHeight})`,
   mobileIosTen: `(min-width: ${width.mobileIosTen}) and (min-height: ${height.mobileIosTenHeight})`,

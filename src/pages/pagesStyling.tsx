@@ -1,5 +1,5 @@
 import React from 'react'
-import { IonButton, IonInput } from '@ionic/react'
+import { IonButton, IonInput, IonPage } from '@ionic/react'
 
 import { styled } from '@material-ui/core/styles'
 import { Button } from '@material-ui/core'
@@ -21,4 +21,26 @@ const GoButton = styled(Button)({
   verticalAlign: 'middle',
 })
 
-export { GoButton }
+const HomeContent = styled(IonPage)({
+  textAlign: 'center',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  height: '100%',
+})
+
+const HomeButtonDiv = styled('div')({
+  textAlign: 'center',
+  justifyContent: 'center',
+  verticalAlign: 'middle',
+  alignItems: 'center',
+  marginTop: '2rem',
+})
+
+const InOutButton = styled(Button)({
+  width: '17rem',
+  height: '12rem',
+  margin: '.5rem',
+})
+
+export { GoButton, HomeContent, HomeButtonDiv, InOutButton }

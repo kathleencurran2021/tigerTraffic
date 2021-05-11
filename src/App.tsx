@@ -59,22 +59,31 @@ const App: React.FC = () => {
 
   const delay = 1000
 
-  // if (!BackgroundMode.isActive()) {
-  //   console.log('app is active')
-  // }
-  // if (BackgroundMode.isActive()) {
-  //   console.log('enabling background mode')
-  //   BackgroundMode.enable()
-  // }
+  // useEffect(() => {
+  //   if (!BackgroundMode.isActive()) {
+  //     console.log('not in background mode')
+  //   }
+  //   if (BackgroundMode.isActive()) {
+  //     console.log('enabling background mode')
+  //     BackgroundMode.enable()
+  //   }
 
-  const onDeviceReady = () => {
-    BackgroundMode.enable()
-    console.log('trying to enable')
+  //   const onDeviceReady = () => {
+  //     BackgroundMode.enable()
+  //     console.log('trying to enable')
+  //     BackgroundMode.disableWebViewOptimizations()
+  //   }
+
+  //   document.addEventListener('deviceready', onDeviceReady)
+  // }, [])
+
+  BackgroundMode.on('activate').subscribe(() => {
     BackgroundMode.disableWebViewOptimizations()
-  }
+  })
+  BackgroundMode.enable()
 
   // const onload = () => {
-  document.addEventListener('deviceready', onDeviceReady)
+
   // BackgroundMode.on('activate', () =>
   //   BackgroundMode.disableWebViewOptimizations()
   // )

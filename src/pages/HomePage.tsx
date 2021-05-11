@@ -19,17 +19,35 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     height: '100%',
   },
+  text: {
+    '@media (min-height: 800px)': {
+      //allows for the 'safe zone' notch on the iphone
+      // the safe zone is 44pt --> 3.6 rem
+      marginTop: '3.6rem',
+    },
+  },
   buttons: {
-    textAlign: 'center',
-    justifyContent: 'center',
-    verticalAlign: 'middle',
-    alignItems: 'center',
-    marginTop: '2rem',
+    [theme.breakpoints.down('xs')]: {
+      textAlign: 'center',
+      justifyContent: 'center',
+      verticalAlign: 'middle',
+      alignItems: 'center',
+      marginTop: '2rem',
+      // backgroundColor: 'red',
+    },
+    '@media (min-height: 800px)': {
+      marginTop: '2rem',
+    },
   },
   inButton: {
     width: '17rem',
     height: '12rem',
     margin: '.5rem',
+    '@media (min-height: 800px)': {
+      width: '19rem',
+      height: '15rem',
+      margin: '.5rem',
+    },
   },
 }))
 
@@ -79,13 +97,15 @@ export const HomePage: React.FC = () => {
   return (
     <IonPage className={classes.root}>
       <IonContent>
-        <IonText>
-          <h1>HomePage</h1>
-        </IonText>
-        {/* <Button onClick={() => notifications.schedule()}>PUSH</Button> */}
-        {(checkin && building != Building && (
-          <IonText>You are checked in to {building.name}</IonText>
-        )) || <IonText>You are not checked in anywhere</IonText>}
+        <div className={classes.text}>
+          <IonText>
+            <h1>HomePage</h1>
+          </IonText>
+          {/* <Button onClick={() => notifications.schedule()}>PUSH</Button> */}
+          {(checkin && building != Building && (
+            <IonText>You are checked in to {building.name}</IonText>
+          )) || <IonText>You are not checked in anywhere</IonText>}
+        </div>
         <br></br>
         <div className={classes.buttons}>
           {(checkin == false && (

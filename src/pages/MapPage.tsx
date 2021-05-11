@@ -29,11 +29,20 @@ import { UseInterval } from '../components/Stopwatch'
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    '@media (min-height: 800px)': {
+      marginTop: '3.6rem',
+    },
+  },
+
+  text: {
     textAlign: 'center',
   },
   boxRules: {
     height: 476,
     width: '100%',
+    '@media (min-height: 800px)': {
+      height: 580,
+    },
   },
 }))
 
@@ -51,18 +60,6 @@ export const MapPage = () => {
   useEffect(() => {
     console.log('trying mapPage', building)
   }, [building])
-
-  // useEffect(() => {
-  //   checkin ? setPlaying(!isPlaying) : setPlaying(false)
-  //   console.log('playing?', isPlaying)
-  // }, [])
-
-  // UseInterval(
-  //   () => {
-  //     setTime(time + 1)
-  //   },
-  //   isPlaying ? delay : null
-  // )
 
   const handleOpen = (someBuilding: BuildingProps) => {
     setOpen(true)
@@ -84,22 +81,21 @@ export const MapPage = () => {
   return (
     <IonPage>
       <IonContent>
-        <IonText>
-          <h1>
-            <b>Study Map</b>
-          </h1>
-        </IonText>
-        <Container>
-          <IonText className={classes.root}>
+        <Container className={classes.root}>
+          <IonText>
+            <h1>
+              <b>Study Map</b>
+            </h1>
+          </IonText>
+
+          <IonText className={classes.text}>
             <Typography>South Quad &uarr;</Typography>
           </IonText>
           <Box className={classes.boxRules} border={1}>
             <LillyButton variant="contained" disabled>
               Lilly
             </LillyButton>
-            <PCCMButton variant="contained" disabled>
-              PCCM
-            </PCCMButton>
+            <PCCMButton variant="contained">PCCM</PCCMButton>
             <JulianButton
               variant="contained"
               onClick={() => handleOpen(Julian)}>
@@ -116,20 +112,16 @@ export const MapPage = () => {
             <GCPAButton variant="contained" onClick={() => handleOpen(GCPA)}>
               GCPA
             </GCPAButton>
-            <HarrisonButton variant="contained" disabled>
-              Harrison
-            </HarrisonButton>
-            <EastCoButton variant="contained" disabled>
+            <HarrisonButton variant="contained">Harrison</HarrisonButton>
+            <EastCoButton variant="contained">
               East<br></br>College
             </EastCoButton>
             <RoyButton variant="contained" onClick={() => handleOpen(Roy)}>
               Roy O.<br></br>West
             </RoyButton>
-            <AsburyButton variant="contained" disabled>
-              Asbury
-            </AsburyButton>
+            <AsburyButton variant="contained">Asbury</AsburyButton>
           </Box>
-          <IonText className={classes.root}>
+          <IonText className={classes.text}>
             <Typography>Seminary St. &darr;</Typography>
           </IonText>
         </Container>

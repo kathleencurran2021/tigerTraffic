@@ -1,5 +1,5 @@
 import { IonContent, IonPage, IonText } from '@ionic/react'
-import { Button, makeStyles } from '@material-ui/core'
+import { Button, Container, makeStyles } from '@material-ui/core'
 import React, { useContext, useEffect, useState } from 'react'
 import { Building, Hoover } from '../components/Building'
 import { Navbar } from '../components/Navbar'
@@ -20,20 +20,20 @@ const useStyles = makeStyles(() => ({
   root: {
     textAlign: 'center',
     marginLeft: '.5rem',
+    '@media (min-height: 800px)': {
+      marginTop: '3.6rem',
+    },
   },
   button: {
     backgroundColor: '#ffc72c',
     color: 'black',
-    marginTop: '4rem',
+    marginTop: '.5rem',
     height: '3rem',
-    '&:hover': {
-      backgroundColor: '#63666a',
+    '&:disabled': {
+      backgroundColor: 'darkgrey',
       color: 'white',
     },
-    '&::after': {
-      backgroundColor: '#63666a',
-      color: 'white',
-    },
+    '@media (min-height: 800px)': {},
   },
   logout: {
     marginTop: '14rem',
@@ -93,7 +93,6 @@ export const UserPage = () => {
 
   useEffect(() => {
     checkin ? setPlaying(!isPlaying) : setPlaying(false)
-    // console.log('playing?', isPlaying)
   }, [])
 
   useEffect(() => {
@@ -110,48 +109,58 @@ export const UserPage = () => {
 
   return (
     <IonPage>
-      <IonContent className={classes.root}>
-        <div>
-          {/* if you are checked in, include the building, if note print None */}
-          <h2>
-            Current Building:
-            {(checkin && building != Building && <b> {building.name}</b>) ||
-              ' None'}
-          </h2>
-          {/* <Button onClick={getObject}>YEs</Button> */}
-          <h3>You are currently logged in as {user.email}</h3>
+      <IonContent>
+        <Container className={classes.root}>
+          <div>
+            {/* <Button onClick={getObject}>YEs</Button> */}
+            <h2>Hello, {user.email}</h2>
+            {/* if you are checked in, include the building, if note print None */}
+            <h2>
+              You are checked into:
+              {(checkin && building != Building && <b> {building.name}</b>) ||
+                ' None'}
+            </h2>
 
-          {(checkin && building != Building && (
-            <IonText>
-              You have been in <b>{building.name}</b> for{' '}
-              {time < 60 ? <b>{time} seconds</b> : <b>{minuteTime} minutes</b>}
-            </IonText>
-          )) ||
-            ''}
+            {(checkin && building != Building && (
+              <IonText>
+                You have been in <b>{building.name}</b> for{' '}
+                {time < 60 ? (
+                  <b>{time} seconds</b>
+                ) : (
+                  <b>{minuteTime} minutes</b>
+                )}
+              </IonText>
+            )) ||
+              ''}
 
-          {checkin ? (
-            <Button
-              className={classes.button}
-              variant="contained"
-              onClick={handleCheckout}>
-              Check Out of Spot
-            </Button>
-          ) : (
-            <Button className={classes.button} variant="contained" disabled>
-              Check Out of Spot
-            </Button>
-          )}
-        </div>
+            <br></br>
+            <br></br>
+            <br></br>
+            <h4>What would you like to do?</h4>
+            {checkin ? (
+              <Button
+                className={classes.button}
+                variant="contained"
+                onClick={handleCheckout}>
+                Check Out of {building.name}
+              </Button>
+            ) : (
+              <Button className={classes.button} variant="contained" disabled>
+                Check Out
+              </Button>
+            )}
+          </div>
 
-        <Button
-          className={classes.logout}
-          variant="contained"
-          color="primary"
-          component={RouterLink}
-          to={'/welcome'}
-          onClick={handleLogout}>
-          Log Out
-        </Button>
+          <Button
+            className={classes.logout}
+            variant="contained"
+            color="primary"
+            component={RouterLink}
+            to={'/welcome'}
+            onClick={handleLogout}>
+            Log Out
+          </Button>
+        </Container>
       </IonContent>
       <Navbar></Navbar>
     </IonPage>

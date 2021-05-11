@@ -2,6 +2,7 @@ import {
   Accordion,
   AccordionDetails,
   Button,
+  Container,
   makeStyles,
 } from '@material-ui/core'
 import { AccordionSummary } from '@material-ui/core'
@@ -19,6 +20,18 @@ import { UseInterval } from '../components/Stopwatch'
 
 const useStyles = makeStyles(() => ({
   root: {
+    padding: 0,
+
+    '@media (min-height: 800px)': {
+      marginTop: '3.6rem',
+    },
+  },
+  page: {
+    marginBottom: '4rem',
+    maxHeight: '100%',
+    overflow: 'auto',
+  },
+  text: {
     textAlign: 'center',
     width: '100%',
     height: '100%',
@@ -88,54 +101,57 @@ export const CheckInPage = () => {
   })
 
   return (
-    <CheckinPageContent className="big-div">
-      <h1 className={classes.root}>Check In </h1>
+    // <Container className={classes.root}>
+    <CheckinPageContent className={classes.page}>
+      <Container className={classes.root}>
+        <h1 className={classes.text}>Check In </h1>
 
-      {/* maps each building and creates an accordion for each  */}
-      {buildingArray.map((build, index) => (
-        <Accordion
-          className={build.name + 'accordion'}
-          expanded={expanded == 'panel' + index}
-          onChange={handleChange('panel' + index)}>
-          <AccordionSummary
-            className={'accordion-summmary-' + index}
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls={'panel' + index + 'bh-content'}
-            id={'panel' + index + 'bh-header'}>
-            <h1>{build.name}</h1>
-          </AccordionSummary>
-          <AccordionDetails
-            style={{ display: 'block' }}
-            className={build.name + '-details'}>
-            <Typography>{`${build.name} total capacity: ${build.capacity}\n`}</Typography>
-            <br></br>
-            <Typography>{`Seats in use: ${build.peopleInside}`}</Typography>
-            {/* Checks to see if the spot is full */}
-            {build.peopleInside == build.capacity ? (
-              <Typography>
-                Spot is <b>FULL</b>
-              </Typography>
-            ) : (
-              <Typography>{`Seats Available: ${build.seatsAvailable}`}</Typography>
-            )}
+        {/* maps each building and creates an accordion for each  */}
+        {buildingArray.map((build, index) => (
+          <Accordion
+            className={build.name + 'accordion'}
+            expanded={expanded == 'panel' + index}
+            onChange={handleChange('panel' + index)}>
+            <AccordionSummary
+              className={'accordion-summmary-' + index}
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls={'panel' + index + 'bh-content'}
+              id={'panel' + index + 'bh-header'}>
+              <h1>{build.name}</h1>
+            </AccordionSummary>
+            <AccordionDetails
+              style={{ display: 'block' }}
+              className={build.name + '-details'}>
+              <Typography>{`${build.name} total capacity: ${build.capacity}\n`}</Typography>
+              <br></br>
+              <Typography>{`Seats in use: ${build.peopleInside}`}</Typography>
+              {/* Checks to see if the spot is full */}
+              {build.peopleInside == build.capacity ? (
+                <Typography>
+                  Spot is <b>FULL</b>
+                </Typography>
+              ) : (
+                <Typography>{`Seats Available: ${build.seatsAvailable}`}</Typography>
+              )}
 
-            {checkin == true || build.peopleInside == build.capacity ? (
-              <Button className={classes.button} variant="contained" disabled>
-                Check In
-              </Button>
-            ) : (
-              <Button
-                className={classes.button}
-                variant="contained"
-                onClick={() => handleCheckin(build)}>
-                Check In
-              </Button>
-            )}
-          </AccordionDetails>
-        </Accordion>
-      ))}
-
+              {checkin == true || build.peopleInside == build.capacity ? (
+                <Button className={classes.button} variant="contained" disabled>
+                  Check In
+                </Button>
+              ) : (
+                <Button
+                  className={classes.button}
+                  variant="contained"
+                  onClick={() => handleCheckin(build)}>
+                  Check In
+                </Button>
+              )}
+            </AccordionDetails>
+          </Accordion>
+        ))}
+      </Container>
       <Navbar />
     </CheckinPageContent>
+    // </Container>
   )
 }

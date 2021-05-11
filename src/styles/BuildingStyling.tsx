@@ -21,10 +21,14 @@ const LillyButton = styled(Button)({
   position: 'fixed',
   marginLeft: '15rem',
   marginTop: '3rem',
-  backgroundColor: '#63666a',
-  color: 'white',
+  backgroundColor: '#ffc72c',
+  color: 'black',
   '&:hover': {
     backgroundColor: '#63666a',
+    color: 'white',
+  },
+  '&:disabled': {
+    backgroundColor: 'darkgrey',
     color: 'white',
   },
 })
@@ -38,16 +42,29 @@ const HooverButton = styled(Button)({
     backgroundColor: '#63666a',
     color: 'white',
   },
+  '@media (min-height: 800px)': {
+    marginLeft: '8.5rem',
+    marginTop: '14rem',
+  },
 })
+
 const UBButton = styled(Button)({
   position: 'fixed',
   marginLeft: '1.5rem',
   marginTop: '12rem',
-  backgroundColor: '#63666a',
+  backgroundColor: '#ffc72c',
   color: 'white',
   width: '4.3rem',
   '&:hover': {
     backgroundColor: '#63666a',
+    color: 'white',
+  },
+  '@media (min-height: 800px)': {
+    marginLeft: '2rem',
+    marginTop: '14rem',
+  },
+  '&:disabled': {
+    backgroundColor: 'darkgrey',
     color: 'white',
   },
 })
@@ -55,11 +72,15 @@ const HarrisonButton = styled(Button)({
   position: 'fixed',
   marginLeft: '14rem',
   marginTop: '16rem',
-  backgroundColor: '#63666a',
-  color: 'white',
+  backgroundColor: '#ffc72c',
+  color: 'black',
   '&:hover': {
     backgroundColor: '#63666a',
     color: 'white',
+  },
+  '@media (min-height: 800px)': {
+    marginLeft: '14rem',
+    marginTop: '19.5rem',
   },
 })
 
@@ -69,7 +90,7 @@ const GCPAButton = styled(Button)({
   marginTop: '4rem',
   backgroundColor: '#ffc72c',
   color: 'black',
-  '&:hover': {
+  '&::after': {
     backgroundColor: '#63666a',
     color: 'white',
   },
@@ -79,12 +100,16 @@ const PCCMButton = styled(Button)({
   position: 'fixed',
   marginLeft: '.5rem',
   marginTop: '4rem',
-  backgroundColor: '#63666a',
-  color: 'white',
+  backgroundColor: '#ffc72c',
+  color: 'black',
   transform: 'rotate(90deg)',
-  '&:hover': {
+  '&:active': {
     backgroundColor: '#63666a',
     color: 'white',
+  },
+  '@media (min-height: 800px)': {
+    marginLeft: '1rem',
+    marginTop: '5rem',
   },
 })
 
@@ -92,11 +117,15 @@ const EastCoButton = styled(Button)({
   position: 'fixed',
   marginLeft: '5.5rem',
   marginTop: '20rem',
-  backgroundColor: '#63666a',
-  color: 'white',
+  backgroundColor: '#ffc72c',
+  color: 'black',
   '&:hover': {
     backgroundColor: '#63666a',
     color: 'white',
+  },
+  '@media (min-height: 800px)': {
+    marginLeft: '5.5rem',
+    marginTop: '22rem',
   },
 })
 
@@ -111,17 +140,25 @@ const RoyButton = styled(Button)({
     backgroundColor: '#63666a',
     color: 'white',
   },
+  '@media (min-height: 800px)': {
+    marginLeft: '16.5rem',
+    marginTop: '24.5rem',
+  },
 })
 
 const AsburyButton = styled(Button)({
   position: 'fixed',
   marginLeft: '15rem',
   marginTop: '25.2rem',
-  backgroundColor: '#63666a',
-  color: 'white',
+  backgroundColor: '#ffc72c',
+  color: 'black',
   '&:hover': {
     backgroundColor: '#63666a',
     color: 'white',
+  },
+  '@media (min-height: 800px)': {
+    marginLeft: '15rem',
+    marginTop: '31.2rem',
   },
 })
 

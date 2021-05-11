@@ -15,15 +15,37 @@ import { CheckinContext } from '../context/CheckinContext'
 import { BuildingContext } from '../context/BuildingContext'
 import { TimeContext } from '../context/TimeContext'
 import { UseInterval } from './Stopwatch'
+import { red } from '@material-ui/core/colors'
 
 const useStyles = makeStyles({
-  modal: {},
+  modal: {
+    '& .MuiDialog-paper': {
+      '@media (min-height: 800px)': {
+        height: '40%',
+        width: '90%',
+      },
+    },
+  },
   text: {
     textAlign: 'center',
     marginTop: 0,
+    '@media (min-height: 800px)': {
+      fontSize: '2rem',
+    },
+  },
+  modalText: {
+    '@media (min-height: 800px)': {
+      fontSize: '1.18rem',
+    },
   },
   button: {
     justifyContent: 'center',
+    '@media (min-height: 800px)': {
+      marginTop: '1rem',
+      height: '3rem',
+      fontSize: '16px',
+      padding: '12px',
+    },
   },
 })
 
@@ -74,7 +96,6 @@ export const MapModal: React.FC<ModalProps> = ({
 
   useEffect(() => {
     checkin ? setPlaying(!isPlaying) : setPlaying(false)
-    // console.log('playing?', isPlaying)
   }, [])
 
   useEffect(() => {
@@ -84,17 +105,25 @@ export const MapModal: React.FC<ModalProps> = ({
   })
 
   return (
-    <Dialog open={isOpen} onClose={handleClose} className={classes.modal}>
-      <DialogContent>
+    <Dialog
+      id={'LOOOKING'}
+      open={isOpen}
+      onClose={handleClose}
+      className={classes.modal}>
+      <DialogContent className={classes.modal}>
         <h1 className={classes.text}>{title}</h1>
-        <Typography>Capacity: {Building.capacity} </Typography>
-        <Typography>
+        <Typography className={classes.modalText}>
+          Capacity: {Building.capacity}{' '}
+        </Typography>
+        <Typography className={classes.modalText}>
           People currently inside: {Building.peopleInside}
         </Typography>
         {building.seatsAvailable != 0 ? (
-          <Typography>Seats Available: {Building.seatsAvailable} </Typography>
+          <Typography className={classes.modalText}>
+            Seats Available: {Building.seatsAvailable}{' '}
+          </Typography>
         ) : (
-          <Typography>
+          <Typography className={classes.modalText}>
             Seats Available: <b>None</b>{' '}
           </Typography>
         )}

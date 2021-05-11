@@ -1,6 +1,11 @@
 import { Redirect, Route } from 'react-router-dom'
 import { Switch } from 'react-router'
-import { IonApp, IonRouterOutlet } from '@ionic/react'
+import {
+  IonApp,
+  IonRouterOutlet,
+  isPlatform,
+  useIonViewWillEnter,
+} from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
 import { HomePage } from './pages/HomePage'
 import { MapPage } from './pages/MapPage'
@@ -37,9 +42,12 @@ import { DefaultUser, UserProps } from './components/User'
 import { UserContext } from './context/UserContext'
 
 import { TimeContext, timeProps } from './context/TimeContext'
+import { BackgroundMode } from '@ionic-native/background-mode'
 
 import notifications from '../../tigerTraffic/src/components/Notifications'
 import { UseInterval } from './components/Stopwatch'
+import { device } from './utils/MediaQueries'
+import { platform } from 'os'
 const { LocalNotifications } = Plugins
 
 const App: React.FC = () => {
@@ -48,8 +56,36 @@ const App: React.FC = () => {
   const [user, setUser] = useState<UserProps>(DefaultUser)
   const [time, setTime] = useState<number>(0)
   const [isPlaying, setPlaying] = useState<boolean>(false)
-  const minuteTime = (time / 60).toFixed(1)
+
   const delay = 1000
+
+  // if (!BackgroundMode.isActive()) {
+  //   console.log('app is active')
+  // }
+  // if (BackgroundMode.isActive()) {
+  //   console.log('enabling background mode')
+  //   BackgroundMode.enable()
+  // }
+
+  const onDeviceReady = () => {
+    BackgroundMode.enable()
+    console.log('trying to enable')
+    BackgroundMode.disableWebViewOptimizations()
+  }
+
+  // const onload = () => {
+  document.addEventListener('deviceready', onDeviceReady)
+  // BackgroundMode.on('activate', () =>
+  //   BackgroundMode.disableWebViewOptimizations()
+  // )
+  // }
+
+  // var start = new Date().getTime()
+  // console.log(start)
+  // if (new Date().getTime() - start > 20000) {
+  //   console.log('too long')
+  //   BackgroundMode.disable()
+  // }
 
   useEffect(() => {
     if (building == Hoover && time == 5) {
@@ -62,6 +98,7 @@ const App: React.FC = () => {
       setTime(0)
     }
     if (time == 10) {
+      console.log('checking on user')
       notifications.scheduleSecond(building)
     }
   })

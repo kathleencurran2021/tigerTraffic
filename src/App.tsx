@@ -55,13 +55,13 @@ const App: React.FC = () => {
       Hoover.peopleInside -= 1
       Hoover.seatsAvailable += 1
       setBuilding(Building)
-      notifications.schedule()
+      notifications.scheduleFirst()
       setPlaying(false)
       setTime(0)
     }
     // checks a user out after 2 hours
     if (time == 7200) {
-      notifications.schedule(building)
+      notifications.scheduleSecond(building)
 
       // setCheckin(false)
       // building.peopleInside -= 1

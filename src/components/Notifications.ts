@@ -26,6 +26,7 @@ class Notifications {
               {
                 id: 'checkout',
                 title: 'Okay',
+                foreground: true,
               },
               {
                 id: 'dismiss',
@@ -96,7 +97,6 @@ class Notifications {
             body: `Are you still studying in ${whatBuilding.name}?`,
             actionTypeId: 'BEEN_AWAY',
             id: 2,
-
             schedule: {
               at: new Date(new Date().getTime() + 1000),
               // repeats: true,

@@ -28,6 +28,7 @@ const useStyles = makeStyles(() => ({
     backgroundColor: '#ffc72c',
     color: 'black',
     marginTop: '.5rem',
+    marginRight: '.5rem',
     height: '3rem',
     '&:disabled': {
       backgroundColor: 'darkgrey',
@@ -42,6 +43,9 @@ const useStyles = makeStyles(() => ({
     color: 'white',
     height: '3rem',
     width: '8rem',
+  },
+  div: {
+    display: 'inline',
   },
 }))
 
@@ -137,18 +141,40 @@ export const UserPage = () => {
             <br></br>
             <br></br>
             <h4>What would you like to do?</h4>
-            {checkin ? (
-              <Button
-                className={classes.button}
-                variant="contained"
-                onClick={handleCheckout}>
-                Check Out of {building.name}
-              </Button>
-            ) : (
-              <Button className={classes.button} variant="contained" disabled>
-                Check Out
-              </Button>
-            )}
+            <div className={classes.div}>
+              {checkin ? (
+                <Button
+                  className={classes.button}
+                  variant="contained"
+                  onClick={handleCheckout}>
+                  Check Out of {building.name}
+                </Button>
+              ) : (
+                <Button className={classes.button} variant="contained" disabled>
+                  Check Out
+                </Button>
+              )}
+              {checkin ? (
+                <Button
+                  className={classes.button}
+                  variant="contained"
+                  color="primary"
+                  component={RouterLink}
+                  disabled
+                  to={'/checkin'}>
+                  Check In
+                </Button>
+              ) : (
+                <Button
+                  className={classes.button}
+                  variant="contained"
+                  color="primary"
+                  component={RouterLink}
+                  to={'/checkin'}>
+                  Check In
+                </Button>
+              )}
+            </div>
           </div>
 
           <Button

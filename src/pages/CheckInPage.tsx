@@ -21,7 +21,7 @@ import { UseInterval } from '../components/Stopwatch'
 const useStyles = makeStyles(() => ({
   root: {
     padding: 0,
-
+    marginBottom: '5rem',
     '@media (min-height: 800px)': {
       marginTop: '3.6rem',
     },
@@ -74,7 +74,6 @@ export const CheckInPage = () => {
     console.log(building)
     Building.peopleInside += 1
     Building.seatsAvailable -= 1
-    // setPlaying(isPlaying)
     setPlaying(true)
   }
 

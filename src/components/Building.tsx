@@ -61,6 +61,49 @@ let Harrison: BuildingProps = {
   studySpots: ['First Floor', 'Second Floor', 'Third Floor'],
 }
 
-const buildingArray = [Julian, Hoover, Roy, GCPA]
+let Asbury: BuildingProps = {
+  name: 'Asbury',
+  capacity: 51,
+  peopleInside: 2,
+  seatsAvailable: 49,
+  studySpots: ['First Floor', 'Second Floor', 'Third Floor'],
+}
 
-export { Building, Julian, Hoover, GCPA, Roy, buildingArray }
+let EastCo: BuildingProps = {
+  name: 'East College',
+  capacity: 51,
+  peopleInside: 2,
+  seatsAvailable: 49,
+  studySpots: ['First Floor', 'Second Floor', 'Third Floor'],
+}
+let PCCM: BuildingProps = {
+  name: 'PCCM',
+  capacity: 51,
+  peopleInside: 2,
+  seatsAvailable: 49,
+  studySpots: ['First Floor', 'Second Floor', 'Third Floor'],
+}
+
+const buildingArray = [
+  Julian,
+  Hoover,
+  Roy,
+  GCPA,
+  Harrison,
+  Asbury,
+  EastCo,
+  PCCM,
+]
+
+export {
+  Building,
+  Julian,
+  Hoover,
+  GCPA,
+  Harrison,
+  Roy,
+  Asbury,
+  EastCo,
+  PCCM,
+  buildingArray,
+}

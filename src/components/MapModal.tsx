@@ -106,7 +106,7 @@ export const MapModal: React.FC<ModalProps> = ({
 
   return (
     <Dialog
-      id={'LOOOKING'}
+      id={'LOOKING'}
       open={isOpen}
       onClose={handleClose}
       className={classes.modal}>

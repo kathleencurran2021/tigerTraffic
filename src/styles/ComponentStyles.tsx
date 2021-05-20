@@ -6,6 +6,7 @@ import {
 import React from 'react'
 
 const BottomNav = styled(BottomNavigation)({
+  marginTop: '10rem',
   backgroundColor: '#ffc72c',
   color: 'black',
   fontSize: '9rem',

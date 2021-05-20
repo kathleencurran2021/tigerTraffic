@@ -59,42 +59,12 @@ const App: React.FC = () => {
 
   const delay = 1000
 
-  // useEffect(() => {
-  //   if (!BackgroundMode.isActive()) {
-  //     console.log('not in background mode')
-  //   }
-  //   if (BackgroundMode.isActive()) {
-  //     console.log('enabling background mode')
-  //     BackgroundMode.enable()
-  //   }
-
-  //   const onDeviceReady = () => {
-  //     BackgroundMode.enable()
-  //     console.log('trying to enable')
-  //     BackgroundMode.disableWebViewOptimizations()
-  //   }
-
-  //   document.addEventListener('deviceready', onDeviceReady)
-  // }, [])
-
   BackgroundMode.on('activate').subscribe(() => {
     BackgroundMode.disableWebViewOptimizations()
   })
   BackgroundMode.enable()
 
   // const onload = () => {
-
-  // BackgroundMode.on('activate', () =>
-  //   BackgroundMode.disableWebViewOptimizations()
-  // )
-  // }
-
-  // var start = new Date().getTime()
-  // console.log(start)
-  // if (new Date().getTime() - start > 20000) {
-  //   console.log('too long')
-  //   BackgroundMode.disable()
-  // }
 
   useEffect(() => {
     if (building == Hoover && time == 5) {

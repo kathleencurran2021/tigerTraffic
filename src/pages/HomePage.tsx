@@ -1,5 +1,5 @@
 import { IonContent, IonPage, IonText } from '@ionic/react'
-import { Box, Button, makeStyles } from '@material-ui/core'
+import { Button, makeStyles } from '@material-ui/core'
 import React, { useContext, useEffect, useState } from 'react'
 import { Navbar } from '../components/Navbar'
 import { Link as RouterLink } from 'react-router-dom'
@@ -9,8 +9,8 @@ import { Building, Hoover } from '../components/Building'
 import { UserContext } from '../context/UserContext'
 import { TimeContext } from '../context/TimeContext'
 import { UseInterval } from '../components/Stopwatch'
-import notifications from '../components/Notifications'
 
+// styling for home page elements
 const useStyles = makeStyles((theme) => ({
   root: {
     textAlign: 'center',
@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
       verticalAlign: 'middle',
       alignItems: 'center',
       marginTop: '2rem',
-      // backgroundColor: 'red',
     },
     '@media (min-height: 800px)': {
       marginTop: '2rem',
@@ -60,12 +59,7 @@ export const HomePage: React.FC = () => {
   const [isPlaying, setPlaying] = useState<boolean>(false)
   const delay = 1000
 
-  useEffect(() => {
-    console.log('checkin home', checkin)
-    console.log('trying building home', building)
-    console.log('and the user is', user)
-  }, [checkin, building])
-
+  // timer
   UseInterval(
     () => {
       setTime(time + 1)
@@ -78,6 +72,7 @@ export const HomePage: React.FC = () => {
     console.log('playing?', isPlaying)
   }, [])
 
+  // handles user checkout
   const handleCheckout = () => {
     setCheckin(false)
     setBuilding(Building)
@@ -101,13 +96,14 @@ export const HomePage: React.FC = () => {
           <IonText>
             <h1>HomePage</h1>
           </IonText>
-          {/* <Button onClick={() => notifications.schedule()}>PUSH</Button> */}
+          {/* changes home text depending on checkin status */}
           {(checkin && building != Building && (
             <IonText>You are checked in to {building.name}</IonText>
           )) || <IonText>You are not checked in anywhere</IonText>}
         </div>
         <br></br>
         <div className={classes.buttons}>
+          {/* changes button enable/disable depending on checkin status */}
           {(checkin == false && (
             <Button
               className={classes.inButton}
@@ -129,6 +125,7 @@ export const HomePage: React.FC = () => {
             </Button>
           )}
           <br></br>{' '}
+          {/* changes button enable/disable depending on checkin status */}
           {checkin == true ? (
             <Button
               variant="contained"

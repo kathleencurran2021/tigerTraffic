@@ -1,9 +1,7 @@
-import React from 'react'
-import { IonButton, IonInput } from '@ionic/react'
-// import styled from 'styled-components'
 import { styled } from '@material-ui/core/styles'
 import { Button } from '@material-ui/core'
-import { device } from '../utils/MediaQueries'
+
+// styles for the buttons on the map page
 
 const JulianButton = styled(Button)({
   position: 'fixed',

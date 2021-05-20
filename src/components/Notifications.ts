@@ -38,6 +38,7 @@ class Notifications {
         ],
       })
 
+      // this is the info on the notification banner
       await LocalNotifications.schedule({
         notifications: [
           {

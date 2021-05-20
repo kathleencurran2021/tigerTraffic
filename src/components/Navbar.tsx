@@ -9,6 +9,7 @@ const Navbar = () => {
   const [value, setValue] = useState('/')
   const history = useHistory()
 
+  // pushes user to the page they selected on click
   const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
     history.push(newValue)
     setValue(newValue)

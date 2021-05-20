@@ -71,11 +71,7 @@ export const MapModal: React.FC<ModalProps> = ({
   const [isPlaying, setPlaying] = useState<boolean>(false)
   const delay = 1000
 
-  useEffect(() => {
-    console.log('Checkin Context Modal:', checkin)
-    console.log('Modal building', building)
-  }, [checkin, building])
-
+  // checks in the user when clicked, sets the context variables
   const handleModalClick = () => {
     console.log('checked in?' + checkin)
     setCheckin(true)
@@ -87,6 +83,7 @@ export const MapModal: React.FC<ModalProps> = ({
     handleClose()
   }
 
+  // timer
   UseInterval(
     () => {
       setTime(time + 1)
@@ -118,6 +115,7 @@ export const MapModal: React.FC<ModalProps> = ({
         <Typography className={classes.modalText}>
           People currently inside: {Building.peopleInside}
         </Typography>
+        {/* If there are no seats, seats changes to NONE instead of displaying 0 */}
         {building.seatsAvailable != 0 ? (
           <Typography className={classes.modalText}>
             Seats Available: {Building.seatsAvailable}{' '}
@@ -130,6 +128,7 @@ export const MapModal: React.FC<ModalProps> = ({
 
         {children}
         <DialogActions className={classes.button}>
+          {/* disables buttons depending if seats are available or not */}
           {building.seatsAvailable != 0 && checkin == false ? (
             <Button
               className={classes.button}

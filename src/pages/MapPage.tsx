@@ -21,11 +21,13 @@ import {
   Julian,
   GCPA,
   Roy,
+  Harrison,
+  Asbury,
+  EastCo,
+  PCCM,
 } from './../components/Building'
 import { BuildingContext } from '../context/BuildingContext'
-import { CheckinContext } from '../context/CheckinContext'
 import { TimeContext } from '../context/TimeContext'
-import { UseInterval } from '../components/Stopwatch'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,10 +49,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export const MapPage = () => {
-  const delay = 1000
-
   const classes = useStyles()
-  const { checkin, setCheckin } = useContext(CheckinContext)
   const { time, setTime } = useContext(TimeContext)
 
   const [open, setOpen] = React.useState(false)
@@ -95,7 +94,9 @@ export const MapPage = () => {
             <LillyButton variant="contained" disabled>
               Lilly
             </LillyButton>
-            <PCCMButton variant="contained">PCCM</PCCMButton>
+            <PCCMButton variant="contained" onClick={() => handleOpen(PCCM)}>
+              PCCM
+            </PCCMButton>
             <JulianButton
               variant="contained"
               onClick={() => handleOpen(Julian)}>
@@ -112,14 +113,24 @@ export const MapPage = () => {
             <GCPAButton variant="contained" onClick={() => handleOpen(GCPA)}>
               GCPA
             </GCPAButton>
-            <HarrisonButton variant="contained">Harrison</HarrisonButton>
-            <EastCoButton variant="contained">
+            <HarrisonButton
+              variant="contained"
+              onClick={() => handleOpen(Harrison)}>
+              Harrison
+            </HarrisonButton>
+            <EastCoButton
+              variant="contained"
+              onClick={() => handleOpen(EastCo)}>
               East<br></br>College
             </EastCoButton>
             <RoyButton variant="contained" onClick={() => handleOpen(Roy)}>
               Roy O.<br></br>West
             </RoyButton>
-            <AsburyButton variant="contained">Asbury</AsburyButton>
+            <AsburyButton
+              variant="contained"
+              onClick={() => handleOpen(Asbury)}>
+              Asbury
+            </AsburyButton>
           </Box>
           <IonText className={classes.text}>
             <Typography>Seminary St. &darr;</Typography>

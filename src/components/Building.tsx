@@ -8,6 +8,7 @@ export interface BuildingProps {
   studySpots: string[]
 }
 
+//default building
 const Building: BuildingProps = {
   name: '',
   peopleInside: 0,
@@ -20,6 +21,8 @@ export interface BuildingState {
   building: BuildingProps
   setBuilding: React.Dispatch<React.SetStateAction<BuildingProps>>
 }
+
+// all the building data that I use for the rest of the app
 
 let Julian: BuildingProps = {
   name: 'Julian',

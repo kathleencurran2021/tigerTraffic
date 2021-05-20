@@ -1,5 +1,6 @@
 import React, { createContext } from 'react'
 
+// creates checkin context
 interface checkinProps {
   checkin: boolean
   setCheckin: (x: boolean) => void

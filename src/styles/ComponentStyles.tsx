@@ -3,7 +3,6 @@ import {
   BottomNavigationAction,
   styled,
 } from '@material-ui/core'
-import React from 'react'
 
 const BottomNav = styled(BottomNavigation)({
   marginTop: '10rem',

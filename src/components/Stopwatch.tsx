@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
-import { TimeContext } from '../context/TimeContext'
+import { useEffect, useRef } from 'react'
 
+// timer
 export function UseInterval(callback: () => void, delay: number | null) {
   const savedCallback = useRef(callback)
 

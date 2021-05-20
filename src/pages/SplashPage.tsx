@@ -21,6 +21,7 @@ export const SplashPage = () => {
     setUser({ email: textVal, isCheckedIn: false })
   }, [textVal])
 
+  // sets the user information to local storage with key 'user'
   async function setObj() {
     await Storage.set({
       key: 'user',
@@ -28,6 +29,7 @@ export const SplashPage = () => {
     })
   }
 
+  // checks to see if email entered is an authorized email, otherwise throws an error
   const handleEmail = () => {
     if (textVal!.endsWith('@depauw.edu')) {
       setError(false)

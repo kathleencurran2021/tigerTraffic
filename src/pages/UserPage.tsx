@@ -13,7 +13,6 @@ import { UseInterval } from '../components/Stopwatch'
 import { Database } from '@ionic/storage'
 
 import { Plugins } from '@capacitor/core'
-
 const { Storage } = Plugins
 
 const useStyles = makeStyles(() => ({
@@ -57,10 +56,10 @@ export const UserPage = () => {
   const { time, setTime } = useContext(TimeContext)
   const classes = useStyles()
   const [isPlaying, setPlaying] = useState<boolean>(false)
-  const [db, setDB] = useState<Database | null>(null)
 
   const minuteTime = (time / 60).toFixed(1)
 
+  // checks out the user
   const handleCheckout = () => {
     setCheckin(false)
     setBuilding(Building)
@@ -70,19 +69,22 @@ export const UserPage = () => {
     setTime(0)
   }
 
+  // retrieves user object from local storage
   async function getObject() {
     const ret: any = await Storage.get({ key: 'user' })
     const use = ret.value
     setUser({ email: use, isCheckedIn: false })
   }
 
-  async function clear() {
-    await Storage.clear()
-  }
+  // clears local storage upon logout
 
   useEffect(() => {
     getObject()
   }, [])
+
+  async function clear() {
+    await Storage.clear()
+  }
 
   function handleLogout() {
     clear()
@@ -105,18 +107,11 @@ export const UserPage = () => {
     }
   })
 
-  useEffect(() => {
-    console.log('trying checkin user', checkin)
-    console.log('hb building?', building)
-    console.log('time', time)
-  }, [checkin, building])
-
   return (
     <IonPage>
       <IonContent>
         <Container className={classes.root}>
           <div>
-            {/* <Button onClick={getObject}>YEs</Button> */}
             <h2>Hello, {user.email}</h2>
             {/* if you are checked in, include the building, if note print None */}
             <h2>
@@ -124,7 +119,7 @@ export const UserPage = () => {
               {(checkin && building != Building && <b> {building.name}</b>) ||
                 ' None'}
             </h2>
-
+            {/* displays time in building */}
             {(checkin && building != Building && (
               <IonText>
                 You have been in <b>{building.name}</b> for{' '}

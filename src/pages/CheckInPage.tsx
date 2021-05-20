@@ -9,7 +9,6 @@ import { AccordionSummary } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
 import React, { useContext, useEffect, useState } from 'react'
 import { Navbar } from '../components/Navbar'
-
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { BuildingProps, buildingArray, Hoover } from './../components/Building'
 import { CheckinPageContent } from '../styles/CheckinPageStyles'
@@ -18,6 +17,7 @@ import { BuildingContext } from '../context/BuildingContext'
 import { TimeContext } from '../context/TimeContext'
 import { UseInterval } from '../components/Stopwatch'
 
+// styling for the page
 const useStyles = makeStyles(() => ({
   root: {
     padding: 0,
@@ -53,13 +53,14 @@ export const CheckInPage = () => {
   const { checkin, setCheckin } = useContext(CheckinContext)
   const { building, setBuilding } = useContext(BuildingContext)
   const { time, setTime } = useContext(TimeContext)
-  const [isPlaying, setPlaying] = useState<boolean>(false)
 
+  const [isPlaying, setPlaying] = useState<boolean>(false)
   const [expanded, setExpanded] = React.useState<string | false>(false)
 
   const classes = useStyles()
   const delay = 1000
 
+  // handles the expanding of the accordion
   const handleChange = (panel: string) => (
     event: React.ChangeEvent<{}>,
     isExpanded: boolean
@@ -67,6 +68,7 @@ export const CheckInPage = () => {
     setExpanded(isExpanded ? panel : false)
   }
 
+  // checks the user in
   const handleCheckin = (Building: BuildingProps) => {
     console.log('What building are we checking into?', Building)
     setCheckin(true)
@@ -77,6 +79,7 @@ export const CheckInPage = () => {
     setPlaying(true)
   }
 
+  // timer
   UseInterval(
     () => {
       setTime(time + 1)
@@ -85,26 +88,15 @@ export const CheckInPage = () => {
   )
 
   useEffect(() => {
-    console.log('seats available', building.seatsAvailable)
-  }, [building.seatsAvailable])
-
-  useEffect(() => {
-    console.log('trying checkin checkinpage', checkin)
-    console.log('hb building CHECKIN?', building)
-  }, [checkin, building])
-
-  useEffect(() => {
     if (building == Hoover && time == 5) {
       setPlaying(false)
     }
   })
 
   return (
-    // <Container className={classes.root}>
     <CheckinPageContent className={classes.page}>
       <Container className={classes.root}>
         <h1 className={classes.text}>Check In </h1>
-
         {/* maps each building and creates an accordion for each  */}
         {buildingArray.map((build, index) => (
           <Accordion
@@ -133,6 +125,7 @@ export const CheckInPage = () => {
                 <Typography>{`Seats Available: ${build.seatsAvailable}`}</Typography>
               )}
 
+              {/* disables/enables button on checkin status */}
               {checkin == true || build.peopleInside == build.capacity ? (
                 <Button className={classes.button} variant="contained" disabled>
                   Check In
@@ -151,6 +144,5 @@ export const CheckInPage = () => {
       </Container>
       <Navbar />
     </CheckinPageContent>
-    // </Container>
   )
 }

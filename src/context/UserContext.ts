@@ -1,12 +1,10 @@
-import React, { createContext } from 'react'
-import { Building, BuildingProps, Julian } from '../components/Building'
+import { createContext } from 'react'
 import { UserProps, UserState } from '../components/User'
 
+// creates User Context
 const DefaultUser: UserProps = {
   isCheckedIn: false,
   email: '',
-  // howLongCheckedIn: 0,
-  // timesCheckedIn: [],
 }
 
 const defaultUserState: UserState = {

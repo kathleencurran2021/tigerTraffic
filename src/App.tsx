@@ -29,7 +29,7 @@ import '@ionic/react/css/text-alignment.css'
 import '@ionic/react/css/text-transformation.css'
 import '@ionic/react/css/flex-utils.css'
 import '@ionic/react/css/display.css'
-import { Plugins, LocalNotification } from '@capacitor/core'
+import { Plugins } from '@capacitor/core'
 
 /* Theme variables */
 import './theme/variables.css'
@@ -40,14 +40,10 @@ import { BuildingContext } from './context/BuildingContext'
 import { CheckinContext } from './context/CheckinContext'
 import { DefaultUser, UserProps } from './components/User'
 import { UserContext } from './context/UserContext'
-
-import { TimeContext, timeProps } from './context/TimeContext'
+import { TimeContext } from './context/TimeContext'
 import { BackgroundMode } from '@ionic-native/background-mode'
-
 import notifications from '../../tigerTraffic/src/components/Notifications'
-import { UseInterval } from './components/Stopwatch'
-import { device } from './utils/MediaQueries'
-import { platform } from 'os'
+
 const { LocalNotifications } = Plugins
 
 const App: React.FC = () => {
@@ -57,8 +53,6 @@ const App: React.FC = () => {
   const [time, setTime] = useState<number>(0)
   const [isPlaying, setPlaying] = useState<boolean>(false)
 
-  const delay = 1000
-
   BackgroundMode.on('activate').subscribe(() => {
     BackgroundMode.disableWebViewOptimizations()
   })
@@ -66,6 +60,7 @@ const App: React.FC = () => {
 
   // const onload = () => {
 
+  // sends notifications on timeout
   useEffect(() => {
     if (building == Hoover && time == 5) {
       setCheckin(false)
@@ -82,9 +77,9 @@ const App: React.FC = () => {
     }
   })
 
+  // displays each second on the console
   useEffect(() => {
     console.log(time)
-    // console.log(isPlaying)
   }, [time])
 
   return (

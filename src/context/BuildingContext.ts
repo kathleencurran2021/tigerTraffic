@@ -1,14 +1,7 @@
 import React, { createContext } from 'react'
-import { BuildingProps, BuildingState, Julian } from '../components/Building'
+import { BuildingProps, BuildingState, Building } from '../components/Building'
 
-const Building: BuildingProps = {
-  name: '',
-  peopleInside: 0,
-  capacity: 0,
-  seatsAvailable: 0,
-  studySpots: [],
-}
-
+// creates Building context
 const defaultBuildingState: BuildingState = {
   building: Building,
   setBuilding: (): void => {},

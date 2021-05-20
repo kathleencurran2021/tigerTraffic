@@ -1,5 +1,6 @@
-import React, { createContext } from 'react'
+import { createContext } from 'react'
 
+// creates time context
 export interface timeProps {
   time: number
   setTime: (x: number) => void
